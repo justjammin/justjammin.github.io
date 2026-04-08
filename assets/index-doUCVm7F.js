@@ -1882,7 +1882,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
             scroll-snap-stop: always;
             display: flex;
             align-items: stretch;
-            padding: var(--p-gap-xs) 0;
+            padding: calc(var(--p-gap-xs) * 0.65) 0;
             box-sizing: border-box;
           }
           .ab-mobile-slide.ab-left-sc {
