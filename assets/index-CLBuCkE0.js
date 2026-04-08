@@ -1864,7 +1864,8 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
             width: calc(100% + 2 * var(--ab-mobile-gutter));
             margin-left: calc(-1 * var(--ab-mobile-gutter));
             margin-right: calc(-1 * var(--ab-mobile-gutter));
-            min-height: clamp(152px, 44vmin, 280px);
+            /* Compact strip (~⅔ of original, then tightened again) */
+            min-height: clamp(89px, 25.8vmin, 165px);
             height: auto;
             max-height: none;
             overflow-x: auto;
@@ -1906,9 +1907,45 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           .ab-mobile-slide .sc-bar-outer.active .sc-bar-fill {
             clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%) !important;
           }
+          /* Bar row compact (mobile strip only; desktop / tablet grid unchanged) */
+          .ab-mobile-slide.ab-left-sc .sc-bar {
+            min-height: 42px;
+          }
+          .ab-mobile-slide.ab-left-sc .sc-bar-red {
+            min-height: 42px;
+          }
+          .ab-mobile-slide.ab-left-sc .sc-bar-outer.active .sc-bar,
+          .ab-mobile-slide.ab-left-sc .sc-bar-outer.active .sc-bar-red {
+            min-height: 61px;
+          }
           .ab-mobile-slide .sc-bar-content {
-            padding-left: var(--p-gap-sm);
-            padding-right: clamp(4.5rem, 26vmin, 7rem);
+            padding-top: calc(var(--p-gap-xs) * 44 / 75);
+            padding-bottom: calc(var(--p-gap-xs) * 44 / 75);
+            padding-left: calc(var(--p-gap-sm) * 44 / 75);
+            padding-right: clamp(2.65rem, 15.25vmin, 4.1rem);
+            gap: calc(10px * 44 / 75);
+          }
+          .ab-mobile-slide .ab-left-sc .sc-role {
+            font-size: calc(var(--p-fs-role) * 44 / 75);
+            padding: 0 calc(4px * 44 / 75) 0 calc(2px * 44 / 75);
+          }
+          .ab-mobile-slide .ab-left-sc .sc-main-top {
+            gap: calc(8px * 44 / 75);
+          }
+          .ab-mobile-slide .ab-left-sc .sc-icon {
+            font-size: calc(var(--p-fs-body-lg) * 44 / 75);
+            width: clamp(14px, 2.95vmin, 19px);
+          }
+          .ab-mobile-slide .ab-left-sc .sc-label {
+            font-size: calc(var(--p-fs-label) * 44 / 75);
+            letter-spacing: 0.85px;
+          }
+          .ab-mobile-slide .ab-left-sc .sc-char {
+            max-width: clamp(42px, 8.2vmin, 59px);
+            clip-path: polygon(7px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+          }
+          .ab-mobile-slide .sc-bar::after {
+            height: 3px;
           }
           .ab-mobile-wrap .sp-right {
             position: relative;
