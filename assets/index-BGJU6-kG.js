@@ -1126,7 +1126,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           font-size: 22px;
           letter-spacing: 0.4px;
           text-transform: lowercase;
-          padding: 0 14rem 0 22px;
+          padding: 0 16rem 0 22px;
         }
 
         @keyframes sc-right-nav-pop {
