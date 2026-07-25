@@ -1,0 +1,74 @@
+# Jamin (@justjammin)
+
+> AI and backend engineer. Builds agent tooling: prompt engineering, multi-agent
+> orchestration, RAG and MCP servers, on a backend foundation of Symfony, APIs and
+> cloud delivery.
+
+Personal portfolio at https://justjammin.github.io/. Single page, all content in the
+initial HTML, so no client-side rendering is required to read it.
+
+## Profile
+
+- Name: Jamin, handle `justjammin`
+- Specialty: scalability + ingenuity
+- Focus areas: AI, agents, backend, growth
+- Education: Lewis University; MIT OpenCourseWare and AWS certification
+- GitHub: https://github.com/justjammin
+- Gists: https://gist.github.com/justjammin
+
+## Skills
+
+- Agent tooling: prompt engineering, multi-agent orchestration, MCP servers, agent routing
+- Retrieval: RAG, hybrid retrieval (dense vectors, BM25, graph PPR), cross-encoder
+  reranking, vector databases, context engineering
+- Daily driver: TypeScript, Node.js, Next.js, Vue, Tailwind
+- Also fluent: Python, Go, C#, PHP, Symfony, REST APIs, Flask
+- Delivery: CI/CD, Kubernetes, AWS, LLMOps
+- Growth: marketing, analytics, digital, social, community, service, teaching
+
+## Projects
+
+- [promper](https://github.com/justjammin/promper): Prompt-engineering toolkit for Claude
+  Code. Decomposes a rough intent, walks the agent map to find the specialist the task
+  belongs to, and borrows that agent's persona as the prompt's role rather than inventing
+  one. `/prim` grades agents against the standard. TypeScript.
+- [LENA](https://github.com/justjammin/lena): Personal agent harness with context
+  engineering, multi-agent orchestration and RAG skillsets. Python.
+- [GAVEL](https://github.com/justjammin/gavel): Loop engineering framework for verifiable
+  agent runs. Contracts are armed RED and frozen before work starts, so an agent cannot
+  grade its own output.
+- [invokerai](https://github.com/justjammin/invokerai): Routes tasks to the right agent
+  using offline ML. 60+ curated agents, MCP server for 20+ editors. Python.
+- [RAG against the machine](https://github.com/justjammin/RAG-against-the-machine): Codebase
+  question answering with cited answers. Hybrid retrieval plus cross-encoder rerank. Python.
+- [Shannon](https://github.com/justjammin/shannon): Autonomous white-box AI pentester for
+  web applications and APIs. TypeScript.
+- [Legible](https://writelegible.com): Writing tracker for authors. iOS, full stack.
+- [Sight Words](https://sightwords-lvup.onrender.com/): Sight words and spelling practice,
+  built for a kindergarten reader. TypeScript, full stack.
+- [Share The Wealth](https://github.com/justjammin/share-the-wealth): Mirror tracker with UI
+  and ETL-style workflows. Python.
+
+## Writing
+
+An MLOps guidebook series on running machine learning in production:
+
+- [What Is MLOps and Why Should You Care?](https://gist.github.com/justjammin/4bddeb5ab11ec1b7ac493472ab20cfaf)
+- [Data Architecture for ML: The Medallion Pattern](https://gist.github.com/justjammin/1c01214055b9cd2e3def821223296638)
+- [Experiment Tracking and the Model Registry](https://gist.github.com/justjammin/21aa1495ebcdb0e38191ef198e1fb1e5)
+- [Deploying Models: Patterns That Actually Work](https://gist.github.com/justjammin/187a3eaf2407757cca8766d77f9fbfda)
+- [LLMOps: Running Large Language Models in Production](https://gist.github.com/justjammin/ffdd164f420ea7c64ab589e2b2a75b5e)
+- [LLM Cost Optimization: What Actually Moves the Needle](https://gist.github.com/justjammin/f102c929cc14d0d3bd600d9b135d5a4c)
+- [CI/CD for Machine Learning](https://gist.github.com/justjammin/a861fc629b1da0397ebf7cbcd1a1161f)
+- [Monitoring: Catching Problems Before Your Users Do](https://gist.github.com/justjammin/2a7c3a23191193d2df4ef8135f8d5cfb)
+
+## In his own words
+
+- "I care about reliable delivery: CI/CD, Kubernetes, and AWS so shipping stays boring in the
+  best way."
+- "Backend-first craft with Symfony, APIs, and services—paired with solid front-end and web
+  work when the problem needs it."
+- "Front-end, UX, UI, and web design — where engineering meets psychology and the interface
+  finally feels good to use."
+- "I'm not going to shy away from change, Adopt/Adapt/Adept is my mantra in these AI-centric
+  times."

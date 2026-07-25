@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jamin (@justjammin) — AI &amp; Backend Engineer | RAG, MCP, APIs, Cloud</title>
+<meta name="description" content="Portfolio of Jamin (@justjammin), an AI and backend engineer building agent tooling. Projects include promper, LENA, GAVEL, invokerai and RAG against the machine, plus an MLOps guidebook series.">
+<meta name="author" content="Jamin">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#0a0a08">
+<link rel="canonical" href="https://justjammin.github.io/">
+
+<meta property="og:site_name" content="Jamin — netrunner">
+<meta property="og:title" content="Jamin (@justjammin) — AI &amp; Backend Engineer">
+<meta property="og:description" content="AI · Agents · Backend · Growth. Agent tooling, prompt engineering, RAG and MCP servers, on a backend of Symfony, APIs and cloud delivery.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://justjammin.github.io/">
+<meta property="og:image" content="https://justjammin.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="profile:username" content="justjammin">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jamin (@justjammin) — AI &amp; Backend Engineer">
+<meta name="twitter:description" content="Machine learning, RAG, MCP, vector databases, Symfony, APIs. Portfolio and project log.">
+<meta name="twitter:image" content="https://justjammin.github.io/assets/og.jpg">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- Structured data: what AI crawlers and search engines read first -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://justjammin.github.io/#jamin",
+      "name": "Jamin",
+      "alternateName": "justjammin",
+      "url": "https://justjammin.github.io/",
+      "jobTitle": "AI and Backend Engineer",
+      "description": "AI engineer building agent tooling: prompt engineering, multi-agent orchestration, RAG and MCP servers, on a backend foundation of Symfony, APIs and cloud delivery.",
+      "knowsAbout": [
+        "AI Engineering", "Agent Tooling", "Prompt Engineering",
+        "Multi-Agent Orchestration", "Model Context Protocol", "MCP Servers",
+        "Retrieval-Augmented Generation", "RAG", "Hybrid Retrieval",
+        "Vector Databases", "Context Engineering", "LLMOps", "MLOps",
+        "Machine Learning", "LLM Cost Optimization", "Experiment Tracking",
+        "Backend Development", "Symfony", "REST APIs", "Python", "TypeScript",
+        "Go", "C#", "PHP", "Vue", "Tailwind CSS", "Flask",
+        "CI/CD", "Kubernetes", "AWS", "UX Design", "UI Design"
+      ],
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Lewis University" },
+        { "@type": "EducationalOrganization", "name": "MIT OpenCourseWare" }
+      ],
+      "sameAs": ["https://github.com/justjammin"]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://justjammin.github.io/#page",
+      "url": "https://justjammin.github.io/",
+      "name": "Jamin (@justjammin) — AI & Backend Engineer",
+      "mainEntity": { "@id": "https://justjammin.github.io/#jamin" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "promper",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Prompt-engineering toolkit for Claude Code. Turns a rough intent into a role-grounded prompt by routing to the specialist agent the task belongs to and inheriting its persona, rather than inventing a role.",
+      "url": "https://github.com/justjammin/promper",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "TypeScript"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "LENA",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Personal agent harness with built-in context engineering, multi-agent system orchestration and RAG skillsets.",
+      "url": "https://github.com/justjammin/lena",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "GAVEL",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Loop engineering framework for AI agents: contract-first checkpoints and adversarial RED proofs for verifiable autonomous runs.",
+      "url": "https://github.com/justjammin/gavel",
+      "author": { "@id": "https://justjammin.github.io/#jamin" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "invokerai",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Routes tasks to the right AI agent using offline ML, with 60+ curated agents and an MCP server supporting 20+ editors.",
+      "url": "https://github.com/justjammin/invokerai",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "RAG against the machine",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Codebase question answering with hybrid retrieval across dense vectors, BM25 and graph personalized PageRank, plus cross-encoder reranking.",
+      "url": "https://github.com/justjammin/RAG-against-the-machine",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Shannon",
+      "applicationCategory": "SecurityApplication",
+      "description": "Autonomous white-box AI pentester for web applications and APIs.",
+      "url": "https://github.com/justjammin/shannon",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "TypeScript"
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://justjammin.github.io/#mlops-guidebook",
+      "name": "MLOps Guidebook",
+      "description": "A practitioner series on running machine learning in production.",
+      "url": "https://gist.github.com/justjammin",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "blogPost": [
+        { "@type": "BlogPosting", "headline": "What Is MLOps and Why Should You Care?", "url": "https://gist.github.com/justjammin/4bddeb5ab11ec1b7ac493472ab20cfaf", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "Data Architecture for ML: The Medallion Pattern", "url": "https://gist.github.com/justjammin/1c01214055b9cd2e3def821223296638", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "Experiment Tracking and the Model Registry", "url": "https://gist.github.com/justjammin/21aa1495ebcdb0e38191ef198e1fb1e5", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "Deploying Models: Patterns That Actually Work", "url": "https://gist.github.com/justjammin/187a3eaf2407757cca8766d77f9fbfda", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "LLMOps — Running Large Language Models in Production", "url": "https://gist.github.com/justjammin/ffdd164f420ea7c64ab589e2b2a75b5e", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "LLM Cost Optimization — What Actually Moves the Needle", "url": "https://gist.github.com/justjammin/f102c929cc14d0d3bd600d9b135d5a4c", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "CI/CD for Machine Learning — Automating the Path to Production", "url": "https://gist.github.com/justjammin/a861fc629b1da0397ebf7cbcd1a1161f", "author": { "@id": "https://justjammin.github.io/#jamin" } },
+        { "@type": "BlogPosting", "headline": "Monitoring — Catching Problems Before Your Users Do", "url": "https://gist.github.com/justjammin/2a7c3a23191193d2df4ef8135f8d5cfb", "author": { "@id": "https://justjammin.github.io/#jamin" } }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Share The Wealth",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Mirror tracker with UI and ETL-style workflows.",
+      "url": "https://github.com/justjammin/share-the-wealth",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Sight Words",
+      "applicationCategory": "EducationalApplication",
+      "description": "Sight words and spelling practice app built for a kindergarten reader.",
+      "url": "https://sightwords-lvup.onrender.com/",
+      "author": { "@id": "https://justjammin.github.io/#jamin" },
+      "programmingLanguage": "TypeScript"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Legible",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "iOS",
+      "description": "Writing tracker for authors, built as a better alternative to existing trackers.",
+      "url": "https://writelegible.com",
+      "author": { "@id": "https://justjammin.github.io/#jamin" }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Martian+Mono:wght@400;600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<!-- WebGL breach layer; mounted by js only, never required for reading the page -->
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ══ HUD CHROME ═══════════════════════════════════════════════ -->
+<header class="hud" aria-label="System status">
+  <span class="hud__id">USR<b>JAMIN</b></span>
+  <span class="hud__sep" aria-hidden="true"></span>
+  <span class="hud__mode">MODE<b>RANKED</b></span>
+  <span class="hud__spacer"></span>
+  <span class="hud__trace" aria-hidden="true">TRACE<i id="traceVal">000</i></span>
+</header>
+
+<nav class="rail" aria-label="Section">
+  <ol>
+    <li><a href="#about"    data-ram="1"><span>ABOUT</span></a></li>
+    <li><a href="#resume"   data-ram="2"><span>RESUME</span></a></li>
+    <li><a href="#projects" data-ram="3"><span>PROJECTS</span></a></li>
+    <li><a href="#focus"    data-ram="4"><span>FOCUS</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ══ 01 · BOOT ════════════════════════════════════════════════ -->
+<section class="boot" id="boot">
+  <div class="boot__feed" data-depth="0.18">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg" id="heroVideo"
+           aria-label="Retro-anime cyberpunk loop: a netrunner faces a chrome cyborg down a rain-slicked Neo-Tokyo alleyway as a quickhack targeting interface locks on.">
+      <source src="assets/video/feed01.mp4" type="video/mp4">
+    </video>
+    <span class="boot__feedtag">FEED&nbsp;01</span>
+  </div>
+
+  <div class="boot__body">
+    <p class="kicker" data-depth="0.42">BREACH PROTOCOL <i>//</i> DOSSIER UNLOCKED</p>
+
+    <h1 class="boot__name" data-depth="0.30">
+      <span class="glitch" data-text="JAMIN">JAMIN</span>
+      <span class="vh">, AI and backend engineer. Builds agent tooling: prompt engineering, multi-agent orchestration, RAG and MCP servers.</span>
+    </h1>
+
+    <p class="boot__handle" data-depth="0.36">@justjammin</p>
+
+    <p class="boot__spec" data-depth="0.24">
+      specialty: <b>scalability + ingenuity</b>
+    </p>
+
+    <ul class="boot__tags" data-depth="0.20">
+      <li>AI</li><li>Agents</li><li>Backend</li><li>Growth</li>
+    </ul>
+  </div>
+
+  <div class="boot__cue" aria-hidden="true"><span></span>SCROLL TO BREACH</div>
+</section>
+
+<!-- ══ 02 · QUICKHACK PANEL ═════════════════════════════════════ -->
+<section class="qh" id="quickhack" aria-label="Quickhack menu">
+  <div class="qh__stage">
+    <div class="qh__head">
+      <h2 class="scramble">QUICKHACK</h2>
+      <p>Select a daemon. Four available on this target.</p>
+    </div>
+
+    <ol class="qh__list">
+      <li class="qh__item">
+        <a href="#about">
+          <span class="qh__ram">1<i>RAM</i></span>
+          <span class="qh__label">ABOUT ME</span>
+          <span class="qh__desc">Persona dump. Music, gaming, the arc.</span>
+          <span class="qh__bar"><i></i></span>
+        </a>
+      </li>
+      <li class="qh__item">
+        <a href="#resume">
+          <span class="qh__ram">2<i>RAM</i></span>
+          <span class="qh__label">RESUME</span>
+          <span class="qh__desc">Education, skills, ranks I&ndash;IV.</span>
+          <span class="qh__bar"><i></i></span>
+        </a>
+      </li>
+      <li class="qh__item">
+        <a href="#projects">
+          <span class="qh__ram">3<i>RAM</i></span>
+          <span class="qh__label">PROJECTS</span>
+          <span class="qh__desc">Nine shipped builds. Agent tooling first.</span>
+          <span class="qh__bar"><i></i></span>
+        </a>
+      </li>
+      <li class="qh__item">
+        <a href="#focus">
+          <span class="qh__ram">4<i>RAM</i></span>
+          <span class="qh__label">FOCUS</span>
+          <span class="qh__desc">Where the next cycles go.</span>
+          <span class="qh__bar"><i></i></span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ 03 · ABOUT ═══════════════════════════════════════════════ -->
+<section class="sec about" id="about">
+  <div class="sec__head">
+    <p class="kicker">DAEMON 01 <i>//</i> UPLOADED</p>
+    <h2 class="scramble">ABOUT ME</h2>
+  </div>
+
+  <div class="about__grid">
+    <article class="fact fact--wide" data-depth="0.10">
+      <p class="fact__tag">ORIGIN</p>
+      <p class="fact__line">For the longest time I wanted nothing to do with code</p>
+      <p class="fact__line fact__line--turn">but now I can't imagine doing anything else.</p>
+    </article>
+
+    <article class="fact" data-depth="0.16">
+      <p class="fact__tag">OFF&nbsp;SHIFT</p>
+      <p class="fact__line">I DJ, drum, and make music in my spare time.</p>
+    </article>
+
+    <article class="fact" data-depth="0.06">
+      <p class="fact__tag">ON&nbsp;CALL</p>
+      <p class="fact__line">Video game music is how I keep calm during on-call incidents.</p>
+    </article>
+
+    <article class="fact" data-depth="0.20">
+      <p class="fact__tag">RANKED</p>
+      <p class="fact__line">I'm a huge competitive gamer.</p>
+    </article>
+
+    <article class="fact" data-depth="0.12">
+      <p class="fact__tag">NEXT&nbsp;ARC</p>
+      <p class="fact__line">And I can't wait to complete my Machine Learning arc.</p>
+    </article>
+
+    <blockquote class="mantra" data-depth="0.08">
+      <p>I'm not going to shy away from change. <b>Adopt / Adapt / Adept</b> is my mantra in these AI-centric times.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══ 04 · RESUME ══════════════════════════════════════════════ -->
+<section class="sec resume" id="resume">
+  <div class="sec__head">
+    <p class="kicker">DAEMON 02 <i>//</i> RANKED LOG</p>
+    <h2 class="scramble">RESUME</h2>
+  </div>
+
+  <ol class="ranks">
+    <li class="rank" data-depth="0.14">
+      <span class="rank__badge">I</span>
+      <div class="rank__main">
+        <h3>EDUCATION</h3>
+        <p class="rank__sub">LEWIS U / MIT</p>
+      </div>
+      <span class="rank__n">RANK<i>1</i></span>
+    </li>
+    <li class="rank" data-depth="0.10">
+      <span class="rank__badge">II</span>
+      <div class="rank__main">
+        <h3>SKILLS</h3>
+        <p class="rank__sub">AI · Agents · RAG · TypeScript · Node</p>
+      </div>
+      <span class="rank__n">RANK<i>2</i></span>
+    </li>
+    <li class="rank" data-depth="0.16">
+      <span class="rank__badge">III</span>
+      <div class="rank__main">
+        <h3>PROJECTS</h3>
+        <p class="rank__sub">promper · LENA · GAVEL · invokerai</p>
+      </div>
+      <span class="rank__n">RANK<i>3</i></span>
+    </li>
+    <li class="rank" data-depth="0.08">
+      <span class="rank__badge">IV</span>
+      <div class="rank__main">
+        <h3>FOCUS</h3>
+        <p class="rank__sub">AI Engineering · Agent Tooling · Backend · Growth</p>
+      </div>
+      <span class="rank__n">RANK<i>4</i></span>
+    </li>
+  </ol>
+
+  <div class="logs">
+    <div class="logs__col">
+      <h3 class="logs__title">SKILLS LOG</h3>
+      <ol class="skill">
+        <li><span class="skill__n">01</span><p>Agent tooling · MCP servers · prompt engineering · multi-agent orchestration</p><span class="chip">Build</span></li>
+        <li><span class="skill__n">02</span><p>RAG · hybrid retrieval · vector DBs · context engineering · LLMOps</p><span class="chip">Retrieve</span></li>
+        <li><span class="skill__n">03</span><p>TypeScript · Node.js · Next.js · Vue · Tailwind, the daily driver</p><span class="chip">Ship</span></li>
+        <li><span class="skill__n">04</span><p>Python · Go · C# · PHP · Symfony · APIs · CI/CD · AWS</p><span class="chip">Languages</span></li>
+        <li><span class="skill__n">05</span><p>Marketing · analytics · digital · social · community · service · teaching</p><span class="chip">Connect</span></li>
+      </ol>
+    </div>
+
+    <div class="logs__col">
+      <h3 class="logs__title">EDUCATION LOG</h3>
+      <ul class="detail">
+        <li>Degree path at Lewis with coursework mapped to shipping real work, not just grades.</li>
+        <li>MIT OpenCourseWare and AWS certs layered on top of day-to-day Symfony, APIs, and full-stack delivery.</li>
+        <li>Python, PHP, and TypeScript in rotation today; machine learning queued as the next arc.</li>
+      </ul>
+
+      <h3 class="logs__title logs__title--gap">DELIVERY NOTES</h3>
+      <ul class="detail">
+        <li>I care about reliable delivery: CI/CD, Kubernetes, and AWS so shipping stays boring in the best way.</li>
+        <li>Backend-first craft with Symfony, APIs, and services — paired with solid front-end and web work when the problem needs it.</li>
+        <li>I connect engineering to outcomes: analytics, digital and social touchpoints, and clear communication with users and teams.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 · PROJECTS (horizontal) ═══════════════════════════════ -->
+<section class="sec projects" id="projects">
+  <div class="sec__head">
+    <p class="kicker">DAEMON 03 <i>//</i> PROJECT LOG</p>
+    <h2 class="scramble">PROJECTS</h2>
+  </div>
+
+  <div class="track" id="track">
+    <div class="track__inner" id="trackInner">
+
+      <article class="proj proj--lead">
+        <p class="proj__idx">01<i>/09</i></p>
+        <h3 class="proj__name">promper</h3>
+        <p class="proj__stack">TypeScript / Agent tooling</p>
+        <p class="proj__desc">Prompt-engineering toolkit for Claude Code. It decomposes a rough intent, walks the agent map to find the specialist that task belongs to, then borrows that agent's persona as the prompt's role instead of guessing one. Nothing spawns until you say go. <code>/prim</code> grades your agents and hands out the seal of approval.</p>
+        <a class="proj__link" href="https://github.com/justjammin/promper" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/promper</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">02<i>/09</i></p>
+        <h3 class="proj__name">LENA</h3>
+        <p class="proj__stack">Python / Agent harness</p>
+        <p class="proj__desc">Personal harness with built-in context engineering, multi-agent orchestration and RAG skillsets.</p>
+        <a class="proj__link" href="https://github.com/justjammin/lena" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/lena</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">03<i>/09</i></p>
+        <h3 class="proj__name">GAVEL</h3>
+        <p class="proj__stack">Loop engineering</p>
+        <p class="proj__desc">Framework for verifiable agent loops. Contracts get armed RED and frozen before any work starts, so an agent cannot grade its own homework. Runs stay bounded and every checkpoint is machine-checkable.</p>
+        <a class="proj__link" href="https://github.com/justjammin/gavel" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/gavel</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">04<i>/09</i></p>
+        <h3 class="proj__name">invokerai</h3>
+        <p class="proj__stack">Python / Routing</p>
+        <p class="proj__desc">Routes tasks to the right AI agent using offline ML. 60+ curated agents and an MCP server for 20+ editors.</p>
+        <a class="proj__link" href="https://github.com/justjammin/invokerai" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/invokerai</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">05<i>/09</i></p>
+        <h3 class="proj__name">RAG against the machine</h3>
+        <p class="proj__stack">Python / Retrieval</p>
+        <p class="proj__desc">Ask questions about any codebase and get answers with citations. Retrieval runs dense vectors, BM25 and graph PPR together, then a cross-encoder reranks what comes back.</p>
+        <a class="proj__link" href="https://github.com/justjammin/RAG-against-the-machine" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/RAG-against-the-machine</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">06<i>/09</i></p>
+        <h3 class="proj__name">Shannon</h3>
+        <p class="proj__stack">TypeScript / Security</p>
+        <p class="proj__desc">Autonomous white-box AI pentester for web applications and APIs.</p>
+        <a class="proj__link" href="https://github.com/justjammin/shannon" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/shannon</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">07<i>/09</i></p>
+        <h3 class="proj__name">Legible</h3>
+        <p class="proj__stack">iOS / Full stack</p>
+        <p class="proj__desc">My wife kept complaining about her writing trackers, so I built her a better one.</p>
+        <a class="proj__link" href="https://writelegible.com" target="_blank" rel="noopener noreferrer">
+          OPEN <span>writelegible.com</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">08<i>/09</i></p>
+        <h3 class="proj__name">Sight Words</h3>
+        <p class="proj__stack">TypeScript / Full stack</p>
+        <p class="proj__desc">Pet project for my kindergarten daughter — sight words and spelling practice.</p>
+        <a class="proj__link" href="https://sightwords-lvup.onrender.com/" target="_blank" rel="noopener noreferrer">
+          OPEN <span>sightwords-lvup.onrender.com</span>
+        </a>
+      </article>
+
+      <article class="proj">
+        <p class="proj__idx">09<i>/09</i></p>
+        <h3 class="proj__name">Share The Wealth</h3>
+        <p class="proj__stack">Python / API</p>
+        <p class="proj__desc">Mirror tracker with UI and ETL-style workflows.</p>
+        <a class="proj__link" href="https://github.com/justjammin/share-the-wealth" target="_blank" rel="noopener noreferrer">
+          OPEN <span>github.com/justjammin/share-the-wealth</span>
+        </a>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Only meaningful while the track is natively scrollable; the pinned
+       desktop version hides it. -->
+  <p class="track__hint" aria-hidden="true"><span></span>SWIPE FOR MORE</p>
+</section>
+
+<!-- ══ 06 · FOCUS ═══════════════════════════════════════════════ -->
+<section class="sec focus" id="focus">
+  <div class="sec__head">
+    <p class="kicker">DAEMON 04 <i>//</i> TRACE ROUTE</p>
+    <h2 class="scramble">FOCUS</h2>
+  </div>
+
+  <div class="focus__grid">
+    <article class="node" data-depth="0.14">
+      <h3>Agent tooling</h3>
+      <p>Most of my cycles go here. The bet behind promper is that your installed agents already are prompt engineering, so the right role for a prompt is the specialist it would route to rather than something you invent.</p>
+      <span class="chip">promper · invokerai</span>
+    </article>
+
+    <article class="node" data-depth="0.08">
+      <h3>Retrieval &amp; context</h3>
+      <p>Getting the right chunk back is harder than it looks. Dense vectors miss exact identifiers, BM25 misses meaning, so I run both plus graph PPR and rerank what comes out.</p>
+      <span class="chip">RAG · vector DBs</span>
+    </article>
+
+    <article class="node" data-depth="0.18">
+      <h3>TypeScript &amp; web</h3>
+      <p>TypeScript is the daily driver now, with Node and Next for the work that ships. Front-end, UX and UI is where engineering meets psychology and the interface finally feels good to use.</p>
+      <span class="chip">TS · Node · Next</span>
+    </article>
+
+    <article class="node" data-depth="0.10">
+      <h3>Backend &amp; delivery</h3>
+      <p>Clear contracts and Symfony-backed services, with CI/CD, Kubernetes and AWS underneath so shipping stays boring in the best way.</p>
+      <span class="chip">APIs · CI/CD</span>
+    </article>
+
+    <article class="node" data-depth="0.16">
+      <h3>Growth &amp; people</h3>
+      <p>Marketing, analytics, social, teaching, and service — turning data and relationships into momentum, not noise.</p>
+      <span class="chip">Analytics</span>
+    </article>
+
+    <article class="node node--queued" data-depth="0.12">
+      <h3>Writing</h3>
+      <p>An MLOps guidebook series on running machine learning in production. Data architecture, model registries, deployment patterns, what actually moves LLM cost, and how to catch problems before your users do.</p>
+      <a class="chip chip--alt" href="https://gist.github.com/justjammin" target="_blank" rel="noopener noreferrer">Read the series</a>
+    </article>
+  </div>
+</section>
+
+<!-- ══ 07 · JACK OUT ════════════════════════════════════════════ -->
+<footer class="out" id="out">
+  <div class="out__feed" data-depth="0.22">
+    <video autoplay muted loop playsinline preload="none" poster="assets/poster-out.jpg"
+           aria-label="Retro-anime loop: a fisheye view from behind a pilot in a mecha cockpit, looking out over a rain-soaked Neo-Tokyo skyline as the amber readouts cycle.">
+      <source src="assets/video/feed02.mp4" type="video/mp4">
+    </video>
+    <span class="boot__feedtag">FEED&nbsp;02</span>
+  </div>
+
+  <div class="out__body">
+    <p class="kicker">CONNECTION STABLE</p>
+    <h2 class="scramble">JACK OUT</h2>
+    <p class="out__line">Public work, repos in rotation, and whatever I'm breaking this week.</p>
+    <a class="out__cta" href="https://github.com/justjammin" target="_blank" rel="noopener noreferrer">
+      <span>github.com/justjammin</span>
+    </a>
+    <p class="out__meta">JAMIN <i>//</i> @justjammin <i>//</i> AI · Agents · Backend · Growth</p>
+  </div>
+</footer>
+
+</main>
+
+<script src="vendor/gsap.min.js?v=2"></script>
+<script src="vendor/ScrollTrigger.min.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+<script type="module" src="js/bg.js?v=2"></script>
+</body>
+</html>

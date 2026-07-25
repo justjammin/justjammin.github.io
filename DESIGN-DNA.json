@@ -1,0 +1,95 @@
+{
+  "name": "netrunner",
+  "source": "justjammin.github.io — content extracted, IA preserved, visual language rebuilt",
+  "designSystem": {
+    "color": {
+      "space": "oklch",
+      "strategy": "Amber-dominant. Neutrals tinted toward hue 95 so surfaces and brand share a root. Cyan is a secondary scan accent, red is alert-only.",
+      "tokens": {
+        "void": "oklch(0.13 0.008 95)",
+        "surface": "oklch(0.17 0.012 95)",
+        "surfaceRaised": "oklch(0.21 0.014 95)",
+        "line": "oklch(0.31 0.016 95)",
+        "muted": "oklch(0.60 0.018 95)",
+        "text": "oklch(0.93 0.010 95)",
+        "amber": "oklch(0.88 0.185 100)",
+        "amberDim": "oklch(0.66 0.140 100)",
+        "cyan": "oklch(0.83 0.135 205)",
+        "red": "oklch(0.62 0.235 22)"
+      },
+      "ratio": "60 surface / 30 structure / 10 accent"
+    },
+    "typography": {
+      "display": {
+        "family": "Chakra Petch",
+        "role": "Section headings, name, quickhack labels",
+        "why": "Angular, chamfered terminals designed for technical/gaming UI. Chosen over the Orbitron/Rajdhani reflex."
+      },
+      "mono": {
+        "family": "Martian Mono",
+        "role": "Data readouts only — RAM cost, ranks, IDs, status chips, counters",
+        "why": "Wide, unusual monospace. Scoped to actual data so it reads as instrumentation, not as generic developer shorthand."
+      },
+      "body": {
+        "family": "Archivo",
+        "role": "Prose, descriptions, detail bullets",
+        "why": "Refined grotesque that stays legible at small sizes against a dark field."
+      },
+      "scale": {
+        "ratio": 1.28,
+        "headings": "fluid via clamp()",
+        "body": "fixed rem",
+        "note": "Line-height gets +0.08 over normal because light-on-dark type reads lighter."
+      }
+    },
+    "space": {
+      "scale": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
+      "naming": "semantic (--space-xs … --space-3xl)",
+      "rhythm": "Varied. Section leads get 3xl above, related rows get sm. Never uniform padding."
+    },
+    "shape": {
+      "radius": "0 everywhere",
+      "signature": "clip-path polygon notches on frames, size varies by element weight",
+      "borders": "1px hairlines only — no accent stripes of any width"
+    }
+  },
+  "designStyle": {
+    "tone": ["clinical", "aggressive", "machine-precise"],
+    "metaphor": "Breached terminal dossier. The visitor is reading someone else's system, not being marketed to.",
+    "voice": "System readout. Uppercase short labels, sentence-case prose, no exclamation.",
+    "density": "High in data regions, generous around section leads. Contrast between the two is the rhythm.",
+    "antiPatterns": [
+      "rounded cards with drop shadows",
+      "purple-to-blue gradients",
+      "gradient text fills",
+      "decorative glassmorphism",
+      "uniform card grids",
+      "centered everything"
+    ]
+  },
+  "visualEffects": {
+    "webgl": {
+      "tech": "Three.js ShaderMaterial on a single fullscreen quad",
+      "effect": "Breach-protocol datastream — drifting hex grid, vertical code rain, scanline sweep, vignette. Scroll progress and pointer feed the shader as uniforms.",
+      "budget": "DPR capped at 1.5, RAF paused when the tab or canvas is hidden, never mounts under prefers-reduced-motion"
+    },
+    "scroll": {
+      "tech": "GSAP ScrollTrigger",
+      "effects": [
+        "multi-layer parallax — each section moves foreground, midground and background at different scrub rates",
+        "pinned quickhack panel with staggered option upload",
+        "horizontal project log driven by containerAnimation with ease: none",
+        "batch reveals on entry"
+      ],
+      "rules": "transform and opacity only, scrub to native scroll, zero wheel hijacking"
+    },
+    "css": [
+      "scanline overlay at low opacity",
+      "RGB split on display headings via layered text-shadow",
+      "character scramble on section headings",
+      "diagonal hatch fills on inactive frames",
+      "corner ticks drawn with pseudo-elements"
+    ],
+    "reducedMotion": "All of the above collapse to static, fully legible layout. WebGL layer does not mount."
+  }
+}
