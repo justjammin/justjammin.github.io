@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-xdybdw76> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Training Platform — recorded demo | Jamin</title><meta name="description" content="Explore a real CPU training failure and recovery recording, two-worker Ray evidence, and verified Databricks imports. A $0 training-platform demo by Jamin."><link rel="canonical" href="https://justjammin.github.io/demos/training-platform/"><meta property="og:title" content="Training Platform — fail, recover, verify"><meta property="og:description" content="Real commands. Reproducible state. Inspect a recorded training run and its evidence."><meta property="og:url" content="https://justjammin.github.io/demos/training-platform/"><meta property="og:type" content="website"><meta property="og:image" content="https://justjammin.github.io/assets/og.jpg"><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#f5c518"><link rel="stylesheet" href="/_astro/index.C-G3M9mS.css">
+<link rel="stylesheet" href="/_astro/training-platform.WglDDyNf.css"></head> <body data-astro-cid-xdybdw76> <a class="skip" href="#main" data-astro-cid-xdybdw76>Skip to demo</a> <header data-astro-cid-xdybdw76><a href="/#work" class="brand" data-astro-cid-xdybdw76>JAMIN / NETRUNNER</a><nav aria-label="Demo sections" data-astro-cid-xdybdw76><a href="#replay" data-astro-cid-xdybdw76>Replay</a><a href="#results" data-astro-cid-xdybdw76>Results</a><a href="#design" data-astro-cid-xdybdw76>Design</a></nav></header> <main id="main" data-astro-cid-xdybdw76> <section class="hero" data-astro-cid-xdybdw76> <p class="eyebrow" data-astro-cid-xdybdw76><span class="dot" data-astro-cid-xdybdw76></span> FIELD REPORT 01 / TRAINING SYSTEMS</p> <h1 data-astro-cid-xdybdw76>FAIL.<br data-astro-cid-xdybdw76>RECOVER.<br data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>VERIFY.</span></h1> <div class="intro" data-astro-cid-xdybdw76><p class="lead" data-astro-cid-xdybdw76>A training run should survive a worker failure.<br data-astro-cid-xdybdw76>And leave the evidence to prove it.</p><p data-astro-cid-xdybdw76>Hugging Face data → bounded local CPU training → atomic recovery → Databricks reporting. Built with Python, PyTorch, Ray and Delta.</p><a class="button" href="#replay" data-astro-cid-xdybdw76>Explore the recorded demo ↓</a><p class="small" data-astro-cid-xdybdw76>Static evidence site · no account required · $0 external service spend</p></div> </section> <div class="stats" aria-label="Verified recovery facts" data-astro-cid-xdybdw76><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>07</strong><span data-astro-cid-xdybdw76>fault injected</span></div><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>05</strong><span data-astro-cid-xdybdw76>checkpoint restored</span></div><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>20</strong><span data-astro-cid-xdybdw76>updates completed</span></div><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>PASS</strong><span data-astro-cid-xdybdw76>full-state comparison</span></div></div> <section id="replay" class="section" data-astro-cid-xdybdw76> <div class="section-heading" data-astro-cid-xdybdw76><p class="eyebrow" data-astro-cid-xdybdw76>01 / ACTUAL EXECUTION</p><h2 data-astro-cid-xdybdw76>Inspect the run.</h2><p data-astro-cid-xdybdw76>Recorded 2026-09-17 on macOS / arm64, Python 3.12.14. Replay controls show captured output; they do not launch training.</p></div> <div class="replay-layout" data-astro-cid-xdybdw76><div class="chapters" aria-label="Recording chapters" data-astro-cid-xdybdw76><button data-stage="lineage" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>01</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Pin the data</strong><small data-astro-cid-xdybdw76>BANKING77 from Hugging Face. A pinned revision, verified content hash, and fixed holdout make each run traceable.</small></div></button><button data-stage="validate" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>02</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Validate before allocating</strong><small data-astro-cid-xdybdw76>Check the data hash, configuration, and effective batch before starting a worker.</small></div></button><button data-stage="baseline" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>03</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Run the baseline</strong><small data-astro-cid-xdybdw76>Complete 20 optimizer updates on the existing local CPU. Save immutable checkpoints every five updates.</small></div></button><button data-stage="fault" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>04</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Kill the worker</strong><small data-astro-cid-xdybdw76>A persisted, one-shot fault sends SIGKILL at update 7. The process fails; checkpoint 5 remains complete.</small></div></button><button data-stage="resume" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>05</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Resume from durable state</strong><small data-astro-cid-xdybdw76>Restore checkpoint 5 and recompute updates 6–7. Retain both attempts in the raw log.</small></div></button><button data-stage="verify" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>06</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Prove recovery</strong><small data-astro-cid-xdybdw76>Compare weights, optimizer, scheduler, RNG and sampler state with the uninterrupted baseline at rtol 0 / atol 1e-7.</small></div></button><button data-stage="evaluate" type="button" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>07</span><div data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>Evaluate the holdout</strong><small data-astro-cid-xdybdw76>Score the tiny hash-feature MLP on 3,076 fixed test examples. This is a systems demo; model quality is low.</small></div></button></div> <div class="console" data-astro-cid-xdybdw76><div class="console-top" data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>CPU / RECORDED TERMINAL</span><span id="playback-state" role="status" data-astro-cid-xdybdw76>Full transcript</span></div><div class="controls" data-astro-cid-xdybdw76><button id="play" type="button" data-astro-cid-xdybdw76>Play recording</button><button id="show-all" type="button" data-astro-cid-xdybdw76>Show all</button><label data-astro-cid-xdybdw76>Speed <select id="speed" data-astro-cid-xdybdw76><option value="1" data-astro-cid-xdybdw76>1×</option><option value="2" selected data-astro-cid-xdybdw76>2×</option><option value="4" data-astro-cid-xdybdw76>4×</option></select></label></div><pre id="terminal" tabindex="0" aria-label="Recorded terminal output" data-astro-cid-xdybdw76>[0.477s · lineage]
+{
+  &quot;dataset&quot;: &quot;mteb/banking77&quot;,
+  &quot;dataset_hash&quot;: &quot;375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07&quot;,
+  &quot;split_counts&quot;: {
+    &quot;train&quot;: 2464,
+    &quot;validation&quot;: 154,
+    &quot;test&quot;: 3076
+  },
+  &quot;model&quot;: &quot;tiny-hash-mlp-banking77-v1&quot;,
+  &quot;max_steps&quot;: 20
+}
+
+[0.478s · validate]
+$ train-demo validate configs/cpu_smoke.yaml
+
+[0.781s · validate]
+{
+
+[0.782s · validate]
+  &quot;valid&quot;: true,
+
+[0.782s · validate]
+  &quot;global_batch_size&quot;: 8
+
+[0.782s · validate]
+}
+
+[0.827s · validate]
+[exit 0; expected 0]
+
+[0.828s · baseline]
+$ train-demo run configs/cpu_smoke.yaml
+
+[3.706s · baseline]
+{&quot;run_id&quot;: &quot;run-090fda28ddf7&quot;, &quot;directory&quot;: &quot;&lt;repo&gt;/runs/run-090fda28ddf7&quot;, &quot;state&quot;: &quot;success&quot;}
+
+[3.862s · baseline]
+[exit 0; expected 0]
+
+[3.863s · fault]
+$ train-demo run configs/cpu_fault.yaml
+
+[5.613s · fault]
+{&quot;run_id&quot;: &quot;run-d9166c292dde&quot;, &quot;directory&quot;: &quot;&lt;repo&gt;/runs/run-d9166c292dde&quot;, &quot;state&quot;: &quot;failed&quot;}
+
+[5.665s · fault]
+[exit 1; expected 1]
+
+[5.735s · fault]
+{&quot;run_id&quot;: &quot;run-d9166c292dde&quot;, &quot;state&quot;: &quot;failed&quot;, &quot;error&quot;: &quot;Driver exited -9; see driver-0.log&quot;, &quot;committed_step&quot;: 5}
+
+[5.736s · resume]
+$ train-demo resume --run-id run-d9166c292dde
+
+[8.043s · resume]
+{&quot;run_id&quot;: &quot;run-d9166c292dde&quot;, &quot;directory&quot;: &quot;&lt;repo&gt;/runs/run-d9166c292dde&quot;, &quot;state&quot;: &quot;success&quot;}
+
+[8.242s · resume]
+[exit 0; expected 0]
+
+[8.314s · verify]
+{
+  &quot;baseline_run_id&quot;: &quot;run-090fda28ddf7&quot;,
+  &quot;recovered_run_id&quot;: &quot;run-d9166c292dde&quot;,
+  &quot;restored_steps&quot;: [
+    0,
+    5
+  ],
+  &quot;final_step&quot;: 20,
+  &quot;raw_rows&quot;: 22,
+  &quot;canonical_rows&quot;: 20,
+  &quot;verified_state_fields&quot;: [
+    &quot;model&quot;,
+    &quot;optimizer&quot;,
+    &quot;scheduler&quot;,
+    &quot;rng_by_rank&quot;,
+    &quot;global_step&quot;,
+    &quot;epoch&quot;,
+    &quot;sampler_position&quot;
+  ],
+  &quot;rtol&quot;: 0,
+  &quot;atol&quot;: 1e-07
+}
+
+[8.536s · evaluate]
+{
+  &quot;run_id&quot;: &quot;run-d9166c292dde&quot;,
+  &quot;base_macro_f1&quot;: 0.002908097932580854,
+  &quot;trained_macro_f1&quot;: 0.012578938460299316
+}
+
+[8.536s · complete]
+Full-state recovery comparison passed. CPU-only execution; no cloud training.</pre><div class="console-footer" data-astro-cid-xdybdw76><a href="/demos/training-platform/transcript.txt" download data-astro-cid-xdybdw76>Download transcript ↗</a><a href="/demos/training-platform/recording.json" download data-astro-cid-xdybdw76>Recording JSON ↗</a></div></div></div> <p class="small" data-astro-cid-xdybdw76>Baseline run-090fda28ddf7 · recovered run-d9166c292dde. Raw metrics: 22; canonical metrics: 20. Repeated updates remain visible in the raw record. Local absolute paths are replaced with &lt;repo&gt; in this public copy.</p> </section> <section id="results" class="section" data-astro-cid-xdybdw76> <div class="section-heading" data-astro-cid-xdybdw76><p class="eyebrow" data-astro-cid-xdybdw76>02 / MEASURED, NOT PROJECTED</p><h2 data-astro-cid-xdybdw76>Correctness first.<br data-astro-cid-xdybdw76>Tradeoffs included.</h2></div> <div class="results-grid" data-astro-cid-xdybdw76><article data-astro-cid-xdybdw76><span class="label" data-astro-cid-xdybdw76>RECORDED CPU RUN</span><h3 data-astro-cid-xdybdw76>State restored.<br data-astro-cid-xdybdw76>Quality still modest.</h3><p data-astro-cid-xdybdw76>Base macro-F1: <strong data-astro-cid-xdybdw76>0.0029</strong>. Trained: <strong data-astro-cid-xdybdw76>0.0126</strong>. All 77 intents; 20 updates; batch size 8. These scores do not establish production language quality.</p><p data-astro-cid-xdybdw76>Seven state fields match the uninterrupted baseline within the declared tolerance.</p></article><article data-astro-cid-xdybdw76><span class="label" data-astro-cid-xdybdw76>EARLIER TWO-WORKER EVIDENCE</span><h3 data-astro-cid-xdybdw76>Two ranks.<br data-astro-cid-xdybdw76>One physical host.</h3><p data-astro-cid-xdybdw76>Three matched-batch repetitions per backend. Ray / Gloo recovery restored step 5 after rank-1 failure at step 7; final model difference: 0.0.</p><p data-astro-cid-xdybdw76>At this tiny scale, setup and coordination made CPU DDP slower. No multi-node or GPU scaling claim.</p></article></div> <div class="table-wrap" data-astro-cid-xdybdw76><table data-astro-cid-xdybdw76><caption data-astro-cid-xdybdw76>Earlier repeated benchmark — batch 16, fixed dataset and 20 updates. Separate from the new batch-8 recording.</caption><thead data-astro-cid-xdybdw76><tr data-astro-cid-xdybdw76><th data-astro-cid-xdybdw76>Backend</th><th data-astro-cid-xdybdw76>Run</th><th data-astro-cid-xdybdw76>Wall time</th><th data-astro-cid-xdybdw76>Macro-F1</th></tr></thead><tbody data-astro-cid-xdybdw76><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>CPU / 1 worker</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-047d1aac07c4</code></td><td data-astro-cid-xdybdw76>3.60 s</td><td data-astro-cid-xdybdw76>0.0202</td></tr><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>CPU / 1 worker</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-d6d704212b1d</code></td><td data-astro-cid-xdybdw76>2.68 s</td><td data-astro-cid-xdybdw76>0.0202</td></tr><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>CPU / 1 worker</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-152fb00bdb76</code></td><td data-astro-cid-xdybdw76>2.58 s</td><td data-astro-cid-xdybdw76>0.0202</td></tr><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>Ray / 2 CPU workers</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-19bef4f74d0d</code></td><td data-astro-cid-xdybdw76>11.02 s</td><td data-astro-cid-xdybdw76>0.0201</td></tr><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>Ray / 2 CPU workers</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-b089bc348547</code></td><td data-astro-cid-xdybdw76>9.62 s</td><td data-astro-cid-xdybdw76>0.0201</td></tr><tr data-astro-cid-xdybdw76><td data-astro-cid-xdybdw76>Ray / 2 CPU workers</td><td data-astro-cid-xdybdw76><code data-astro-cid-xdybdw76>run-cdd4739d5375</code></td><td data-astro-cid-xdybdw76>9.96 s</td><td data-astro-cid-xdybdw76>0.0201</td></tr></tbody></table></div> <article class="delta" data-astro-cid-xdybdw76><div data-astro-cid-xdybdw76><span class="label" data-astro-cid-xdybdw76>DATABRICKS / EXTERNALLY VERIFIED</span><h3 data-astro-cid-xdybdw76>Import twice.<br data-astro-cid-xdybdw76>Count once.</h3><p data-astro-cid-xdybdw76>Free Edition preparation, Delta reads/writes, volume export/readback, repeated imports and comparison queries passed on 2026-09-17.</p><p data-astro-cid-xdybdw76>8 run summaries · 246 raw metrics · 240 canonical metrics · 24,608 paired predictions · zero duplicate-key groups.</p><p class="small" data-astro-cid-xdybdw76>Evidence is a selected-field transcription from executed notebook output, not a fresh cloud run in this recording. An unsupported initial write mode was corrected; separate table writes are not a single transaction.</p></div><div class="delta-count" data-astro-cid-xdybdw76><strong data-astro-cid-xdybdw76>0</strong><span data-astro-cid-xdybdw76>duplicate-key groups<br data-astro-cid-xdybdw76>after every bundle imported twice</span></div></article> </section> <section id="design" class="section" data-astro-cid-xdybdw76><div class="section-heading" data-astro-cid-xdybdw76><p class="eyebrow" data-astro-cid-xdybdw76>03 / FOLLOW THE ARTIFACTS</p><h2 data-astro-cid-xdybdw76>The system, in view.</h2></div> <ol class="architecture" data-astro-cid-xdybdw76><li data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>DATA</span><strong data-astro-cid-xdybdw76>Hugging Face</strong><small data-astro-cid-xdybdw76>Pinned BANKING77<br data-astro-cid-xdybdw76>2,464 / 154 / 3,076 splits</small></li><li data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>COMPUTE</span><strong data-astro-cid-xdybdw76>Local CPU / Ray</strong><small data-astro-cid-xdybdw76>Validated configs<br data-astro-cid-xdybdw76>Bounded time and retries</small></li><li data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>RECOVERY</span><strong data-astro-cid-xdybdw76>Atomic checkpoints</strong><small data-astro-cid-xdybdw76>Full state + SHA-256<br data-astro-cid-xdybdw76>Raw attempt logs retained</small></li><li data-astro-cid-xdybdw76><span data-astro-cid-xdybdw76>REPORTING</span><strong data-astro-cid-xdybdw76>Databricks Delta</strong><small data-astro-cid-xdybdw76>Manual bundle transfer<br data-astro-cid-xdybdw76>Keyed MERGE + comparisons</small></li></ol> <div class="links" data-astro-cid-xdybdw76><a href="https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX" data-astro-cid-xdybdw76>System design + ADR map ↗</a><a href="https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=2-49" data-astro-cid-xdybdw76>Training flowchart ↗</a><a href="https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=2-89" data-astro-cid-xdybdw76>Recovery flowchart ↗</a><a href="https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=2-135" data-astro-cid-xdybdw76>Databricks flowchart ↗</a></div><p class="small" data-astro-cid-xdybdw76>FigJam access depends on board permissions. The architecture above and downloadable evidence remain available without sign-in.</p> <details data-astro-cid-xdybdw76><summary data-astro-cid-xdybdw76>Dataset provenance and limits</summary><p data-astro-cid-xdybdw76><a href="https://huggingface.co/datasets/mteb/banking77" data-astro-cid-xdybdw76>mteb/banking77</a>, revision <code data-astro-cid-xdybdw76>18072d2685ea682290f7b8924d94c62acc19c0b2</code>. Data hash <code data-astro-cid-xdybdw76>375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07</code>. Source holdout preserved; exact normalized duplicate groups audited. Semantic paraphrase independence and independent human label review remain unverified.</p></details> <details data-astro-cid-xdybdw76><summary data-astro-cid-xdybdw76>What this demo does not prove</summary><p data-astro-cid-xdybdw76>No GPU/LoRA, Kubernetes, multi-node performance, managed MLflow, production-scale training or host-loss recovery was demonstrated. Checkpoints share one local host. The source repository remains private. This is a terminal recording with written steps, not a narrated screen video.</p></details> <p class="downloads" data-astro-cid-xdybdw76><a href="/demos/training-platform/evidence.json" download data-astro-cid-xdybdw76>Download measured evidence JSON ↗</a> <a href="/demos/training-platform/walkthrough.md" download data-astro-cid-xdybdw76>Download presenter steps ↗</a></p> </section> </main><footer data-astro-cid-xdybdw76><a href="/#work" data-astro-cid-xdybdw76>← Back to Netrunner</a><span data-astro-cid-xdybdw76>Built by Jamin / $0 external services / September 2026</span></footer> <script type="module">const g=[{seconds:.477,stage:"lineage",text:`{
+  "dataset": "mteb/banking77",
+  "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+  "split_counts": {
+    "train": 2464,
+    "validation": 154,
+    "test": 3076
+  },
+  "model": "tiny-hash-mlp-banking77-v1",
+  "max_steps": 20
+}`},{seconds:.478,stage:"validate",text:"$ train-demo validate configs/cpu_smoke.yaml"},{seconds:.781,stage:"validate",text:"{"},{seconds:.782,stage:"validate",text:'  "valid": true,'},{seconds:.782,stage:"validate",text:'  "global_batch_size": 8'},{seconds:.782,stage:"validate",text:"}"},{seconds:.827,stage:"validate",text:"[exit 0; expected 0]"},{seconds:.828,stage:"baseline",text:"$ train-demo run configs/cpu_smoke.yaml"},{seconds:3.706,stage:"baseline",text:'{"run_id": "run-090fda28ddf7", "directory": "<repo>/runs/run-090fda28ddf7", "state": "success"}'},{seconds:3.862,stage:"baseline",text:"[exit 0; expected 0]"},{seconds:3.863,stage:"fault",text:"$ train-demo run configs/cpu_fault.yaml"},{seconds:5.613,stage:"fault",text:'{"run_id": "run-d9166c292dde", "directory": "<repo>/runs/run-d9166c292dde", "state": "failed"}'},{seconds:5.665,stage:"fault",text:"[exit 1; expected 1]"},{seconds:5.735,stage:"fault",text:'{"run_id": "run-d9166c292dde", "state": "failed", "error": "Driver exited -9; see driver-0.log", "committed_step": 5}'},{seconds:5.736,stage:"resume",text:"$ train-demo resume --run-id run-d9166c292dde"},{seconds:8.043,stage:"resume",text:'{"run_id": "run-d9166c292dde", "directory": "<repo>/runs/run-d9166c292dde", "state": "success"}'},{seconds:8.242,stage:"resume",text:"[exit 0; expected 0]"},{seconds:8.314,stage:"verify",text:`{
+  "baseline_run_id": "run-090fda28ddf7",
+  "recovered_run_id": "run-d9166c292dde",
+  "restored_steps": [
+    0,
+    5
+  ],
+  "final_step": 20,
+  "raw_rows": 22,
+  "canonical_rows": 20,
+  "verified_state_fields": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "rng_by_rank",
+    "global_step",
+    "epoch",
+    "sampler_position"
+  ],
+  "rtol": 0,
+  "atol": 1e-07
+}`},{seconds:8.536,stage:"evaluate",text:`{
+  "run_id": "run-d9166c292dde",
+  "base_macro_f1": 0.002908097932580854,
+  "trained_macro_f1": 0.012578938460299316
+}`},{seconds:8.536,stage:"complete",text:"Full-state recovery comparison passed. CPU-only execution; no cloud training."}],s={events:g},n=document.querySelector("#terminal"),r=document.querySelector("#play"),a=document.querySelector("#playback-state"),x=document.querySelector("#speed");let l,t=0,c=!1;const i=e=>`[${e.seconds.toFixed(3)}s · ${e.stage}]
+${e.text}`;function d(){clearTimeout(l),c=!1,r.textContent="Play recording"}function u(){const e=s.events[t];if(n.textContent+=(t?`
+
+`:"")+i(e),n.scrollTop=n.scrollHeight,a.textContent=`${e.seconds.toFixed(1)}s / ${e.stage}`,t++,t>=s.events.length){d(),a.textContent="Recording complete";return}l=setTimeout(u,(s.events[t].seconds-e.seconds)*1e3/Number(x.value))}r.addEventListener("click",()=>{if(c){d(),a.textContent="Paused";return}(t===0||t>=s.events.length)&&(t=0,n.textContent=""),c=!0,r.textContent="Pause",u()});document.querySelector("#show-all").addEventListener("click",()=>{d(),t=0,n.textContent=s.events.map(i).join(`
+
+`),a.textContent="Full transcript"});document.querySelectorAll("[data-stage]").forEach(e=>e.addEventListener("click",()=>{d(),t=0,n.textContent=s.events.filter(o=>o.stage===e.dataset.stage).map(i).join(`
+
+`),n.scrollTop=0,a.textContent=e.dataset.stage,document.querySelectorAll("[data-stage]").forEach(o=>o.removeAttribute("aria-pressed")),e.setAttribute("aria-pressed","true")}));</script> </body></html>

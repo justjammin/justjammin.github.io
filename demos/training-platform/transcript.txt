@@ -1,0 +1,94 @@
+[0.477s · lineage]
+{
+  "dataset": "mteb/banking77",
+  "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+  "split_counts": {
+    "train": 2464,
+    "validation": 154,
+    "test": 3076
+  },
+  "model": "tiny-hash-mlp-banking77-v1",
+  "max_steps": 20
+}
+
+[0.478s · validate]
+$ train-demo validate configs/cpu_smoke.yaml
+
+[0.781s · validate]
+{
+
+[0.782s · validate]
+  "valid": true,
+
+[0.782s · validate]
+  "global_batch_size": 8
+
+[0.782s · validate]
+}
+
+[0.827s · validate]
+[exit 0; expected 0]
+
+[0.828s · baseline]
+$ train-demo run configs/cpu_smoke.yaml
+
+[3.706s · baseline]
+{"run_id": "run-090fda28ddf7", "directory": "<repo>/runs/run-090fda28ddf7", "state": "success"}
+
+[3.862s · baseline]
+[exit 0; expected 0]
+
+[3.863s · fault]
+$ train-demo run configs/cpu_fault.yaml
+
+[5.613s · fault]
+{"run_id": "run-d9166c292dde", "directory": "<repo>/runs/run-d9166c292dde", "state": "failed"}
+
+[5.665s · fault]
+[exit 1; expected 1]
+
+[5.735s · fault]
+{"run_id": "run-d9166c292dde", "state": "failed", "error": "Driver exited -9; see driver-0.log", "committed_step": 5}
+
+[5.736s · resume]
+$ train-demo resume --run-id run-d9166c292dde
+
+[8.043s · resume]
+{"run_id": "run-d9166c292dde", "directory": "<repo>/runs/run-d9166c292dde", "state": "success"}
+
+[8.242s · resume]
+[exit 0; expected 0]
+
+[8.314s · verify]
+{
+  "baseline_run_id": "run-090fda28ddf7",
+  "recovered_run_id": "run-d9166c292dde",
+  "restored_steps": [
+    0,
+    5
+  ],
+  "final_step": 20,
+  "raw_rows": 22,
+  "canonical_rows": 20,
+  "verified_state_fields": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "rng_by_rank",
+    "global_step",
+    "epoch",
+    "sampler_position"
+  ],
+  "rtol": 0,
+  "atol": 1e-07
+}
+
+[8.536s · evaluate]
+{
+  "run_id": "run-d9166c292dde",
+  "base_macro_f1": 0.002908097932580854,
+  "trained_macro_f1": 0.012578938460299316
+}
+
+[8.536s · complete]
+Full-state recovery comparison passed. CPU-only execution; no cloud training.

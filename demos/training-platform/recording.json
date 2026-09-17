@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-17T04:17:08.845554+00:00",
+  "source_commit": "1765c6695f2dd6c7ea148ad9c070ab4cced79a9f",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "machine": "arm64",
+    "torch": "2.8.0"
+  },
+  "events": [
+    {
+      "seconds": 0.477,
+      "stage": "lineage",
+      "text": "{\n  \"dataset\": \"mteb/banking77\",\n  \"dataset_hash\": \"375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07\",\n  \"split_counts\": {\n    \"train\": 2464,\n    \"validation\": 154,\n    \"test\": 3076\n  },\n  \"model\": \"tiny-hash-mlp-banking77-v1\",\n  \"max_steps\": 20\n}"
+    },
+    {
+      "seconds": 0.478,
+      "stage": "validate",
+      "text": "$ train-demo validate configs/cpu_smoke.yaml"
+    },
+    {
+      "seconds": 0.781,
+      "stage": "validate",
+      "text": "{"
+    },
+    {
+      "seconds": 0.782,
+      "stage": "validate",
+      "text": "  \"valid\": true,"
+    },
+    {
+      "seconds": 0.782,
+      "stage": "validate",
+      "text": "  \"global_batch_size\": 8"
+    },
+    {
+      "seconds": 0.782,
+      "stage": "validate",
+      "text": "}"
+    },
+    {
+      "seconds": 0.827,
+      "stage": "validate",
+      "text": "[exit 0; expected 0]"
+    },
+    {
+      "seconds": 0.828,
+      "stage": "baseline",
+      "text": "$ train-demo run configs/cpu_smoke.yaml"
+    },
+    {
+      "seconds": 3.706,
+      "stage": "baseline",
+      "text": "{\"run_id\": \"run-090fda28ddf7\", \"directory\": \"<repo>/runs/run-090fda28ddf7\", \"state\": \"success\"}"
+    },
+    {
+      "seconds": 3.862,
+      "stage": "baseline",
+      "text": "[exit 0; expected 0]"
+    },
+    {
+      "seconds": 3.863,
+      "stage": "fault",
+      "text": "$ train-demo run configs/cpu_fault.yaml"
+    },
+    {
+      "seconds": 5.613,
+      "stage": "fault",
+      "text": "{\"run_id\": \"run-d9166c292dde\", \"directory\": \"<repo>/runs/run-d9166c292dde\", \"state\": \"failed\"}"
+    },
+    {
+      "seconds": 5.665,
+      "stage": "fault",
+      "text": "[exit 1; expected 1]"
+    },
+    {
+      "seconds": 5.735,
+      "stage": "fault",
+      "text": "{\"run_id\": \"run-d9166c292dde\", \"state\": \"failed\", \"error\": \"Driver exited -9; see driver-0.log\", \"committed_step\": 5}"
+    },
+    {
+      "seconds": 5.736,
+      "stage": "resume",
+      "text": "$ train-demo resume --run-id run-d9166c292dde"
+    },
+    {
+      "seconds": 8.043,
+      "stage": "resume",
+      "text": "{\"run_id\": \"run-d9166c292dde\", \"directory\": \"<repo>/runs/run-d9166c292dde\", \"state\": \"success\"}"
+    },
+    {
+      "seconds": 8.242,
+      "stage": "resume",
+      "text": "[exit 0; expected 0]"
+    },
+    {
+      "seconds": 8.314,
+      "stage": "verify",
+      "text": "{\n  \"baseline_run_id\": \"run-090fda28ddf7\",\n  \"recovered_run_id\": \"run-d9166c292dde\",\n  \"restored_steps\": [\n    0,\n    5\n  ],\n  \"final_step\": 20,\n  \"raw_rows\": 22,\n  \"canonical_rows\": 20,\n  \"verified_state_fields\": [\n    \"model\",\n    \"optimizer\",\n    \"scheduler\",\n    \"rng_by_rank\",\n    \"global_step\",\n    \"epoch\",\n    \"sampler_position\"\n  ],\n  \"rtol\": 0,\n  \"atol\": 1e-07\n}"
+    },
+    {
+      "seconds": 8.536,
+      "stage": "evaluate",
+      "text": "{\n  \"run_id\": \"run-d9166c292dde\",\n  \"base_macro_f1\": 0.002908097932580854,\n  \"trained_macro_f1\": 0.012578938460299316\n}"
+    },
+    {
+      "seconds": 8.536,
+      "stage": "complete",
+      "text": "Full-state recovery comparison passed. CPU-only execution; no cloud training."
+    }
+  ],
+  "complete": true,
+  "recovery": {
+    "baseline_run_id": "run-090fda28ddf7",
+    "recovered_run_id": "run-d9166c292dde",
+    "restored_steps": [
+      0,
+      5
+    ],
+    "final_step": 20,
+    "raw_rows": 22,
+    "canonical_rows": 20,
+    "verified_state_fields": [
+      "model",
+      "optimizer",
+      "scheduler",
+      "rng_by_rank",
+      "global_step",
+      "epoch",
+      "sampler_position"
+    ],
+    "rtol": 0,
+    "atol": 1e-07
+  },
+  "evaluation": {
+    "base": {
+      "macro_f1": 0.002908097932580854
+    },
+    "trained": {
+      "macro_f1": 0.012578938460299316
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "local_verified_at": "2026-09-17T02:57:48.072615+00:00",
+  "runs": [
+    {
+      "allocated_worker_slot_hours": 0.0009989039930547328,
+      "backend": "cpu",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.01512337604071945,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.017296012543878855,
+      "elapsed_seconds": 3.5960543749970384,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 305610752,
+      "recomputed_updates": 0,
+      "repeat": 0,
+      "run_id": "run-047d1aac07c4",
+      "state": "success",
+      "steady_examples_per_second": 40779.34724914099,
+      "steady_step_mean_seconds": 0.0003923554710733394,
+      "steady_step_stdev_seconds": 0.00017157742778388634,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.02020411047645971,
+      "workers": 1
+    },
+    {
+      "allocated_worker_slot_hours": 0.0007456696063875117,
+      "backend": "cpu",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.008699208032339811,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.017296012543878855,
+      "elapsed_seconds": 2.684410582995042,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 307855360,
+      "recomputed_updates": 0,
+      "repeat": 1,
+      "run_id": "run-d6d704212b1d",
+      "state": "success",
+      "steady_examples_per_second": 51049.350646250554,
+      "steady_step_mean_seconds": 0.00031342220415050785,
+      "steady_step_stdev_seconds": 0.00014508755509488156,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.02020411047645971,
+      "workers": 1
+    },
+    {
+      "allocated_worker_slot_hours": 0.000715593900563868,
+      "backend": "cpu",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.010093834018334746,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.017296012543878855,
+      "elapsed_seconds": 2.5761380420299247,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 320192512,
+      "recomputed_updates": 0,
+      "repeat": 2,
+      "run_id": "run-152fb00bdb76",
+      "state": "success",
+      "steady_examples_per_second": 50986.07972675052,
+      "steady_step_mean_seconds": 0.00031381114386022093,
+      "steady_step_stdev_seconds": 0.00014962717503403514,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.02020411047645971,
+      "workers": 1
+    },
+    {
+      "allocated_worker_slot_hours": 0.006123177268341856,
+      "backend": "ray",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.32975795795209706,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.01718993458540466,
+      "elapsed_seconds": 11.021719083015341,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 1185742848,
+      "recomputed_updates": 0,
+      "repeat": 0,
+      "run_id": "run-19bef4f74d0d",
+      "state": "success",
+      "steady_examples_per_second": 1569.8852364261627,
+      "steady_step_mean_seconds": 0.010191827802918852,
+      "steady_step_stdev_seconds": 0.003687050312659287,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.020098032517985514,
+      "workers": 2
+    },
+    {
+      "allocated_worker_slot_hours": 0.005342850463348441,
+      "backend": "ray",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.19336108298739418,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.01718993458540466,
+      "elapsed_seconds": 9.617130834027193,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 1157939200,
+      "recomputed_updates": 0,
+      "repeat": 1,
+      "run_id": "run-b089bc348547",
+      "state": "success",
+      "steady_examples_per_second": 6582.00721699791,
+      "steady_step_mean_seconds": 0.0024308694099696975,
+      "steady_step_stdev_seconds": 0.000765375000193082,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.020098032517985514,
+      "workers": 2
+    },
+    {
+      "allocated_worker_slot_hours": 0.005533106690013988,
+      "backend": "ray",
+      "base_f1": 0.002908097932580854,
+      "checkpoint_seconds": 0.19320291600888595,
+      "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+      "delta_f1": 0.01718993458540466,
+      "elapsed_seconds": 9.959592042025179,
+      "global_step": 20,
+      "gpu_memory_bytes": null,
+      "gpu_telemetry_reason": "CPU-only execution",
+      "gpu_utilization": null,
+      "peak_rss_bytes": 1162362880,
+      "recomputed_updates": 0,
+      "repeat": 2,
+      "run_id": "run-cdd4739d5375",
+      "state": "success",
+      "steady_examples_per_second": 5942.347174704785,
+      "steady_step_mean_seconds": 0.002692538744304329,
+      "steady_step_stdev_seconds": 0.0006019379923912956,
+      "steady_window_steps": [
+        6,
+        20
+      ],
+      "trained_f1": 0.020098032517985514,
+      "workers": 2
+    }
+  ],
+  "recovery": [
+    {
+      "backend": "cpu",
+      "baseline_run_id": "run-047d1aac07c4",
+      "canonical_rank_zero_rows": 20,
+      "fault_step": 7,
+      "final_step": 20,
+      "max_model_absolute_difference": 0.0,
+      "raw_rank_zero_rows": 22,
+      "resume_step": 5,
+      "run_id": "run-b6c680f57c75",
+      "state_fields_verified": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng_by_rank",
+        "global_step",
+        "epoch",
+        "sampler_position"
+      ]
+    },
+    {
+      "backend": "ray",
+      "baseline_run_id": "run-19bef4f74d0d",
+      "canonical_rank_zero_rows": 20,
+      "fault_step": 7,
+      "final_step": 20,
+      "max_model_absolute_difference": 0.0,
+      "raw_rank_zero_rows": 22,
+      "resume_step": 5,
+      "run_id": "run-586e0a434d27",
+      "state_fields_verified": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng_by_rank",
+        "global_step",
+        "epoch",
+        "sampler_position"
+      ]
+    }
+  ],
+  "tolerance": {
+    "atol": 1e-07,
+    "rtol": 0
+  },
+  "databricks": {
+    "capture_method": "Selected fields transcribed from the executed notebook Cell 12 VALIDATION_PROOF output; full proof remains in the workspace volume.",
+    "verified_at": "2026-09-17T03:48:05.216621+00:00",
+    "counts": {
+      "banking77_tickets": 5694,
+      "canonical_metrics": 240,
+      "evaluation_results": 24608,
+      "raw_metrics": 246,
+      "run_summaries": 8,
+      "split_manifests": 3
+    },
+    "duplicate_groups": 0,
+    "dataset_hash": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+    "initial_failure": "Cell 7: [UNSUPPORTED_OPERATION] errorifexists is not supported.",
+    "correction": "Use append only after tableExists is false; retain keyed MERGE for existing tables. Corrected preparation and importer cells then succeeded."
+  },
+  "dataset": {
+    "id": "mteb/banking77",
+    "revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+    "split_counts": {
+      "train": 2464,
+      "validation": 154,
+      "test": 3076
+    }
+  }
+}
