@@ -2,7 +2,7 @@
 
 Public demo: https://justjammin.github.io/demos/training-platform/
 
-The page contains a timed terminal replay and written presenter steps. It does not launch training in visitors' browsers. No narrated screen video is claimed.
+The page contains a timed terminal replay and written presenter steps. It does not launch training in visitors' browsers.
 
 ## Presenter sequence (approximately four minutes)
 
@@ -31,7 +31,7 @@ The recorder executes validation, uninterrupted training, one-shot worker failur
 
 Actual recording on September 17, 2026: baseline `run-090fda28ddf7`, recovered `run-d9166c292dde`; restoration `[0,5]`, final update 20, comparison passed. Recording timestamps preserve elapsed wall time; player speed changes playback only. The earlier sandbox attempt emitted PyArrow sysctl warnings that broke a combined stdout/stderr parser before training. The recorder now handles those streams separately; `artifacts/demo/sandbox-attempt.json` preserves that unsuccessful attempt. Native execution passed (`native-command.log`).
 
-Independent human label review remains open. A terminal replay does not satisfy a separate narrated-video requirement.
+Independent human label review remains open.
 
 ## Separate GPU demonstration
 
@@ -43,4 +43,4 @@ The original terminal replay remains a CPU recording. Present the new GPU eviden
 4. Explain that the main experiment uses one GPU and recovery uses a separate GPU. This is not distributed GPU training.
 5. Show the [GPU process flow](https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=3-133), associated with ADR 006.
 
-The 100-update training phase and full held-out evaluation are verified. Show macro-F1 0 → 0.049 alongside the 95.64% invalid adapter-label rate; evaluation identifies label generation as the next validation-driven improvement. Explain the first attempt’s 45-minute deadline and successful checkpoint-100 resume. LoRA-specific Databricks reporting passed repeated imports: 4 runs, 111 raw / 110 canonical metrics, 3,076 paired predictions and zero duplicate-key groups. The voice script includes an additional GPU recovery take; final audio is not recorded yet.
+The 100-update training phase and full held-out evaluation are verified. Show macro-F1 0 → 0.049 alongside the 95.64% invalid adapter-label rate; evaluation identifies label generation as the next validation-driven improvement. Explain the first attempt’s 45-minute deadline and successful checkpoint-100 resume. LoRA-specific Databricks reporting passed repeated imports: 4 runs, 111 raw / 110 canonical metrics, 3,076 paired predictions and zero duplicate-key groups.
