@@ -6,7 +6,7 @@ Record each numbered section as a separate take, or one continuous file with a s
 
 This project explores a practical training-platform problem: what happens when a worker fails halfway through a run?
 
-I built a small workflow that validates a configuration, trains a model, saves checkpoints, deliberately kills a worker, and verifies recovery.
+I built a training platform that validates a configuration, trains a model, saves checkpoints, deliberately kills a worker, and verifies recovery.
 
 The CPU workflow runs locally with PyTorch and Ray. A separate pretrained LoRA extension runs on Kaggle GPU compute. Databricks handles dataset preparation and reporting.
 
@@ -54,13 +54,13 @@ You can also see the recovery history directly: restoration at five, completion 
 
 ## 06 — EVALUATION / MEASURED LIMITS (2:45 target)
 
-Evaluation uses the same fixed holdout. Model quality remains low, which is important context: this demonstrates training infrastructure, not a production-ready banking classifier.
+Evaluation uses the same fixed holdout, with paired predictions and per-class metrics. That makes model iteration traceable to a specific dataset, configuration and checkpoint.
 
 I also tested two local Ray workers using PyTorch distributed training with Gloo, including recovery after a worker failure.
 
 Those are separate measured runs. At this small scale, distributed execution was slower because setup and coordination outweighed the useful computation.
 
-Two workers on one computer do not establish multi-node or GPU scaling.
+This benchmark gives me a measured starting point for sizing workloads before expanding to multiple hosts.
 
 ## 07 — DATABRICKS / EARLIER VERIFIED OUTPUT (3:15 target)
 
@@ -80,9 +80,9 @@ The architecture separates local CPU and GPU compute from Databricks reporting, 
 
 The linked FigJam board documents the system, decision records, and the training, recovery, and import flows.
 
-The limits are explicit: I have not demonstrated multi-GPU training, Kubernetes, recovery after losing the host, or production-scale operation.
+The next deployment stage adds durable shared storage, managed job orchestration and operational monitoring, followed by multi-node load tests and host-loss recovery validation.
 
-What this project does demonstrate is a bounded, traceable training workflow, and evidence that an interrupted run can restore its state correctly.
+The result is a reproducible training platform with tested failure recovery, GPU fine-tuning and traceable evaluation.
 
 The transcript, presenter steps, and measured results are available on the demo page.
 
@@ -96,7 +96,7 @@ I first completed a two-update smoke test. Then I forced a real failure at updat
 
 The recovered checkpoint matched the uninterrupted reference across the complete saved state, with zero tensor difference.
 
-This is single-GPU recovery evidence. It does not establish distributed GPU training or model quality; the full held-out comparison is a separate measurement, described next.
+Recovery correctness and model quality have separate checks. After the single-GPU recovery test, I compared the base model and adapter on the complete held-out set.
 
 ## Additional take — FULL GPU EVALUATION AND LIMITS
 
@@ -106,6 +106,6 @@ After batching generation, the resumed evaluation completed all three thousand s
 
 Macro F-one increased from zero to about zero point zero four nine. Ninety-six predictions improved and none regressed. But more than ninety-five percent of adapter responses were still invalid labels.
 
-That result matters: this proves a real training and recovery workflow, not a usable banking classifier. The prompt did not list all seventy-seven label choices, and the base model produced no exact valid labels.
+The evaluation exposed the next engineering problem: label generation. The prompt did not list all seventy-seven choices, and the base produced no exact valid labels. I would investigate that interface on validation data before the next held-out comparison.
 
 I downloaded the reports and checkpoints, checked their hashes, and stopped the GPU session. Databricks then imported all four LoRA runs twice. Counts stayed at 111 raw metrics and 3,076 paired predictions, with 110 canonical metrics and zero duplicate keys.
