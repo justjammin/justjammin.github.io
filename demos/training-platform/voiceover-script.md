@@ -8,7 +8,7 @@ This project explores a practical training-platform problem: what happens when a
 
 I built a small workflow that validates a configuration, trains a model, saves checkpoints, deliberately kills a worker, and verifies recovery.
 
-The CPU workflow runs locally with PyTorch and Ray. A separate pretrained LoRA extension runs on free Kaggle GPU compute. Databricks handles dataset preparation and reporting. External service spending was zero.
+The CPU workflow runs locally with PyTorch and Ray. A separate pretrained LoRA extension runs on Kaggle GPU compute. Databricks handles dataset preparation and reporting.
 
 ## 02 — DATA / VALIDATION (0:30 target)
 
@@ -64,7 +64,7 @@ Two workers on one computer do not establish multi-node or GPU scaling.
 
 ## 07 — DATABRICKS / EARLIER VERIFIED OUTPUT (3:15 target)
 
-Databricks Free Edition provides the data and reporting side.
+Databricks provides the data and reporting side.
 
 I verified dataset preparation, Delta table writes and reads, artifact export, and result imports.
 
@@ -76,7 +76,7 @@ These results came from an executed Databricks notebook. The terminal recording 
 
 ## 08 — DESIGN / EVIDENCE / NEXT STEPS (3:45 target)
 
-The architecture separates local CPU and free GPU compute from Databricks reporting, transferring verified artifacts between them.
+The architecture separates local CPU and GPU compute from Databricks reporting, transferring verified artifacts between them.
 
 The linked FigJam board documents the system, decision records, and the training, recovery, and import flows.
 
@@ -88,7 +88,7 @@ The transcript, presenter steps, and measured results are available on the demo 
 
 ## Additional take — VERIFIED GPU RECOVERY
 
-This is a separate run on a free Kaggle Tesla T-four GPU. It uses the pretrained Smol-L-M-two model with about one hundred thirty-five million parameters.
+This is a separate run on a Kaggle Tesla T-four GPU. It uses the pretrained Smol-L-M-two model with about one hundred thirty-five million parameters.
 
 LoRA updates only four hundred sixty thousand eight hundred adapter parameters while keeping the base model frozen.
 
@@ -108,4 +108,4 @@ Macro F-one increased from zero to about zero point zero four nine. Ninety-six p
 
 That result matters: this proves a real training and recovery workflow, not a usable banking classifier. The prompt did not list all seventy-seven label choices, and the base model produced no exact valid labels.
 
-I downloaded the reports and checkpoints, checked their hashes, and stopped the free GPU session. Databricks Free Edition then imported all four LoRA runs twice. Counts stayed at 111 raw metrics and 3,076 paired predictions, with 110 canonical metrics and zero duplicate keys.
+I downloaded the reports and checkpoints, checked their hashes, and stopped the GPU session. Databricks then imported all four LoRA runs twice. Counts stayed at 111 raw metrics and 3,076 paired predictions, with 110 canonical metrics and zero duplicate keys.

@@ -33,14 +33,14 @@ Actual recording on September 17, 2026: baseline `run-090fda28ddf7`, recovered `
 
 Independent human label review remains open. A terminal replay does not satisfy a separate narrated-video requirement.
 
-## Separate free GPU demonstration
+## Separate GPU demonstration
 
 The original terminal replay remains a CPU recording. Present the new GPU evidence separately:
 
-1. Open the Kaggle notebook and show the recorded free T4 capability check and pinned model/data revisions.
+1. Open the Kaggle notebook and show the recorded T4 capability check and pinned model/data revisions.
 2. Show the completed two-update smoke manifest: 460,800 trainable adapter parameters and 689,030,144 peak allocated CUDA bytes.
 3. Open `artifacts/lora/kaggle-recovery/gpu-recovery-proof.json`: SIGKILL at update 3, checkpoint 2 restored, final update 4, zero maximum tensor difference from the uninterrupted reference.
 4. Explain that the main experiment uses one GPU and recovery uses a separate GPU. This is not distributed GPU training.
-5. Show the [free GPU process flow](https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=3-133), associated with ADR 006.
+5. Show the [GPU process flow](https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=3-133), associated with ADR 006.
 
 The 100-update training phase and full held-out evaluation are verified. Show macro-F1 0 → 0.049 alongside the 95.64% invalid adapter-label rate; this is not a usable banking classifier. Explain the first attempt’s 45-minute deadline and successful checkpoint-100 resume. LoRA-specific Databricks reporting passed repeated imports: 4 runs, 111 raw / 110 canonical metrics, 3,076 paired predictions and zero duplicate-key groups. The voice script includes an additional GPU recovery take; final audio is not recorded yet.
