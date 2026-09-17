@@ -14,7 +14,7 @@ The page contains a timed terminal replay and written presenter steps. It does n
 | 1:45–2:15 | Select **Prove recovery**. | Seven full-state fields match at `rtol=0, atol=1e-7`. Raw metrics contain 22 rows; canonical view has 20. Execution is at least once. |
 | 2:15–2:45 | Select **Evaluate the holdout**, then inspect Results. | Fresh macro-F1 0.002908 → 0.012579 is low. Earlier matched-batch Ray results are separate runs, on two CPU ranks on one host, and slower at this scale. |
 | 2:45–3:20 | Read the Databricks evidence panel. | Previously verified Free Edition: eight bundles imported twice, zero duplicate-key groups, 246 raw / 240 canonical metrics. Counts are selected transcribed output; this recording did not execute a new cloud job. |
-| 3:20–4:00 | Show system design, flowchart links, and limitations. | Local compute and manual artifact transfer; keyed Delta MERGE; bounded retries. No GPU, Kubernetes, multi-node, production-scale, or host-loss claim. |
+| 3:20–4:00 | Show system design, flowchart links, and limitations. | Local compute and manual artifact transfer; keyed Delta MERGE; bounded retries. This CPU recording makes no GPU claim. Separate GPU evidence is described below; Kubernetes, multi-node, production-scale and host-loss recovery remain unproven. |
 
 Playback supports play/pause, chapter selection, 1×/2×/4× speed and full-transcript view. The complete transcript is available without JavaScript. Download links provide the transcript, timed recording, selected measured evidence and this walkthrough. FigJam may require board permission; the public architecture is self-contained.
 
@@ -32,3 +32,15 @@ The recorder executes validation, uninterrupted training, one-shot worker failur
 Actual recording on September 17, 2026: baseline `run-090fda28ddf7`, recovered `run-d9166c292dde`; restoration `[0,5]`, final update 20, comparison passed. Recording timestamps preserve elapsed wall time; player speed changes playback only. The earlier sandbox attempt emitted PyArrow sysctl warnings that broke a combined stdout/stderr parser before training. The recorder now handles those streams separately; `artifacts/demo/sandbox-attempt.json` preserves that unsuccessful attempt. Native execution passed (`native-command.log`).
 
 Independent human label review remains open. A terminal replay does not satisfy a separate narrated-video requirement.
+
+## Separate free GPU demonstration
+
+The original terminal replay remains a CPU recording. Present the new GPU evidence separately:
+
+1. Open the Kaggle notebook and show the recorded free T4 capability check and pinned model/data revisions.
+2. Show the completed two-update smoke manifest: 460,800 trainable adapter parameters and 689,030,144 peak allocated CUDA bytes.
+3. Open `artifacts/lora/kaggle-recovery/gpu-recovery-proof.json`: SIGKILL at update 3, checkpoint 2 restored, final update 4, zero maximum tensor difference from the uninterrupted reference.
+4. Explain that the main experiment uses one GPU and recovery uses a separate GPU. This is not distributed GPU training.
+5. Show the [free GPU process flow](https://www.figma.com/board/eoP4XdovCYaknxMSlGQcIX?node-id=3-133), associated with ADR 006.
+
+The 100-update training phase and full held-out evaluation are verified. Show macro-F1 0 → 0.049 alongside the 95.64% invalid adapter-label rate; this is not a usable banking classifier. Explain the first attempt’s 45-minute deadline and successful checkpoint-100 resume. LoRA-specific Databricks reporting still awaits transfer approval. The voice script includes an additional GPU recovery take; final audio is not recorded yet.

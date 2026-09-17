@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "execution_location": "kaggle-free",
+  "external_service_spend_usd": 0,
+  "summary": {
+    "run_id": "experiment-01",
+    "state": "success",
+    "hardware": {
+      "cuda": "12.8",
+      "device": "cuda",
+      "name": "Tesla T4"
+    },
+    "global_step": 100,
+    "trainable_parameters": 460800,
+    "base_f1": 0.0,
+    "trained_f1": 0.04899905814302255,
+    "base_invalid_rate": 1.0,
+    "trained_invalid_rate": 0.9564369310793238,
+    "test_count": 3076,
+    "improved": 96,
+    "regressed": 0,
+    "peak_allocated_bytes": 616607744,
+    "peak_reserved_bytes": 675282944,
+    "elapsed_seconds": 3412.8421733860005,
+    "setup_seconds": 5.540617005000058,
+    "steady_step_seconds_median": 0.501931781000053,
+    "steady_examples_per_second": 15.752315262006347,
+    "steady_tokens_per_second": 1162.4565711717337,
+    "final_attempt_elapsed_seconds": 712.5247101720001,
+    "attempts": [
+      {
+        "attempt": 0,
+        "elapsed_seconds": 2700.3174632140003,
+        "error": "Hard wall-clock deadline exceeded",
+        "restored_step": 0,
+        "started_at": "2026-09-17T15:08:52.821746+00:00",
+        "state": "failed"
+      },
+      {
+        "attempt": 1,
+        "elapsed_seconds": 712.5247101720001,
+        "restored_step": 100,
+        "started_at": "2026-09-17T15:56:23.961623+00:00",
+        "state": "success"
+      }
+    ],
+    "generation_batch_size": 8,
+    "peak_memory_scope": "Successful evaluation resume only; hard-killed training attempt did not finalize peak memory"
+  },
+  "recovery": {
+    "physical_gpu_index": 1,
+    "visible_device": "Tesla T4",
+    "scope": "single-GPU LoRA recovery, not DDP",
+    "evaluation_concurrently_on_gpu_index": 0,
+    "run_ids": [
+      "gpu-recovery-reference",
+      "gpu-recovery-resumed"
+    ],
+    "final_step": 4,
+    "restored_steps": [
+      0,
+      2
+    ],
+    "fault": {
+      "signal": "SIGKILL",
+      "step": 3
+    },
+    "all_checkpoint_state_matches": true,
+    "max_abs_tensor_difference": 0.0,
+    "rtol": 1e-05,
+    "atol": 1e-06
+  },
+  "local_import": {
+    "validation_location": "local-macos",
+    "training_location": "kaggle-free",
+    "first_import": {
+      "lora_runs": 4,
+      "lora_metrics": 111,
+      "lora_predictions": 3076
+    },
+    "second_import": {
+      "lora_runs": 4,
+      "lora_metrics": 111,
+      "lora_predictions": 3076
+    },
+    "quality_evaluation": true,
+    "archive_sha256": "635e3c2b145de088b365fc5aa9c80cde4f2c1cd404d0b35f48c3e77da52d1080"
+  },
+  "checkpoint_download": {
+    "archive_sha256": "6dc8a3d03bb045a31bed0a424cfa6a933f2ba8842b15f7069f01b2d41212fb2c",
+    "archive_bytes": 81820458,
+    "validated_files": 58,
+    "final_checkpoint_steps": {
+      "experiment-01": 100,
+      "gpu-recovery-reference": 4,
+      "gpu-recovery-resumed": 4
+    },
+    "validation": "Every extracted checkpoint and adapter file matches its downloaded run manifest hash"
+  },
+  "databricks": {
+    "state": "unverified",
+    "reason": "LoRA reporting notebook transfer awaits owner approval; CPU/Ray Delta reporting is verified separately"
+  },
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "license": "Apache-2.0"
+  },
+  "dataset": {
+    "id": "mteb/banking77",
+    "revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+    "content_sha256": "375427283fcef7a1e557ab1f9626fb731f7543419b2571e53d055017669dcb07",
+    "attribution": "BANKING77: Casanueva, Temcinas, Gerz, Henderson and Vulic (2020), PolyAI; Hugging Face mirror by MTEB",
+    "license": "CC-BY-4.0 (upstream); MIT (mirror card)"
+  },
+  "limitations": [
+    "95.64% invalid adapter labels; not a usable banking classifier",
+    "Single-GPU jobs, not GPU DDP",
+    "First attempt hit its 45-minute deadline; successful resume did not repeat training",
+    "Successful resume memory peaks exclude the hard-killed training attempt",
+    "No repeated controlled GPU performance benchmark",
+    "No host-loss recovery or production claim"
+  ]
+}
