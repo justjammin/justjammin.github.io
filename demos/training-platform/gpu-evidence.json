@@ -98,8 +98,43 @@
     "validation": "Every extracted checkpoint and adapter file matches its downloaded run manifest hash"
   },
   "databricks": {
-    "state": "unverified",
-    "reason": "LoRA reporting notebook transfer awaits owner approval; CPU/Ray Delta reporting is verified separately"
+    "state": "externally-verified",
+    "execution_location": "databricks-free-edition-reporting",
+    "training_location": "kaggle-free",
+    "run_ids": [
+      "experiment-01",
+      "gpu-recovery-reference",
+      "gpu-recovery-resumed",
+      "smoke"
+    ],
+    "first_import": {
+      "lora_runs": 4,
+      "lora_metrics": 111,
+      "lora_predictions": 3076
+    },
+    "second_import": {
+      "lora_runs": 4,
+      "lora_metrics": 111,
+      "lora_predictions": 3076
+    },
+    "payload_row_counts": {
+      "lora_runs": 4,
+      "lora_metrics": 111,
+      "lora_predictions": 3076
+    },
+    "canonical_metrics": 110,
+    "duplicate_key_groups": 0,
+    "spark": "4.2.0",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "source_payload_sha256": "22f295e057b866b88aff8f8cd87b8b6d62a7325ea1bcc14c14f6b3076f52216c",
+    "external_service_spend_usd": 0,
+    "capture": {
+      "method": "Transcribed JSON output from the executed notebook via Codex browser accessibility tree",
+      "date_utc": "2026-09-17",
+      "notebook_url": "https://dbc-d5f3aa4b-820e.cloud.databricks.com/editor/notebooks/1387683565256667?o=7474645850009944",
+      "all_four_code_cells_succeeded": true,
+      "compute": "Existing Free Edition CPU Serverless"
+    }
   },
   "model": {
     "id": "HuggingFaceTB/SmolLM2-135M-Instruct",

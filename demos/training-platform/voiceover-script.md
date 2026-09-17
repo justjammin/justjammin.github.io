@@ -108,4 +108,4 @@ Macro F-one increased from zero to about zero point zero four nine. Ninety-six p
 
 That result matters: this proves a real training and recovery workflow, not a usable banking classifier. The prompt did not list all seventy-seven label choices, and the base model produced no exact valid labels.
 
-I downloaded the reports and checkpoints, checked their hashes, and stopped the free GPU session. LoRA-specific Databricks reporting remains a separate pending verification step.
+I downloaded the reports and checkpoints, checked their hashes, and stopped the free GPU session. Databricks Free Edition then imported all four LoRA runs twice. Counts stayed at 111 raw metrics and 3,076 paired predictions, with 110 canonical metrics and zero duplicate keys.
