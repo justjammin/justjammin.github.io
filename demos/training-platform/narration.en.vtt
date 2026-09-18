@@ -1,0 +1,403 @@
+WEBVTT
+
+00:00:00.250 --> 00:00:04.570
+So I created a training platform, and this project is going to explore
+
+00:00:04.570 --> 00:00:07.130
+practical training platform problem.
+
+00:00:07.850 --> 00:00:11.670
+What happens when the worker fails halfway through a run?
+
+00:00:12.025 --> 00:00:16.965
+So what I built was a durable solution
+
+00:00:16.965 --> 00:00:21.845
+that validates a specific configuration, trains
+
+00:00:21.845 --> 00:00:23.985
+a model, and saves its checkpoints.
+
+00:00:24.633 --> 00:00:29.493
+And after saving its checkpoints, if it fails, deliberately kills
+
+00:00:29.493 --> 00:00:34.413
+the worker and verifies that it recovered from that checkpoint.
+
+00:00:35.393 --> 00:00:39.633
+Now the dataset that I used for this
+
+00:00:39.633 --> 00:00:43.233
+is BANKING77 dataset from Hugging Face.
+
+00:00:43.833 --> 00:00:48.693
+It has about 77 intent categories
+
+00:00:48.693 --> 00:00:52.593
+for a ton of banking questions.
+
+00:00:52.924 --> 00:00:57.764
+The reason I used this dataset was because I wanted to
+
+00:00:57.764 --> 00:01:02.236
+simulate customer service, question
+
+00:01:02.236 --> 00:01:07.200
+-based routing via intent, for either an internal ticketing,
+
+00:01:07.200 --> 00:01:08.260
+queuing system,
+
+00:01:08.980 --> 00:01:13.280
+or for answering questions based off
+
+00:01:13.280 --> 00:01:15.480
+of user intent.
+
+00:01:15.780 --> 00:01:20.420
+So what I did is I pinned the dataset revision and
+
+00:01:20.420 --> 00:01:25.000
+verified its content hash, giving it a content hash key.
+
+00:01:25.700 --> 00:01:30.360
+Then I prepared splits between 2,464
+
+00:01:30.360 --> 00:01:34.880
+training examples and 154 validation
+
+00:01:34.880 --> 00:01:35.720
+examples.
+
+00:01:36.440 --> 00:01:38.300
+Now before allocating a worker,
+
+00:01:39.320 --> 00:01:44.280
+the platform checks the configuration, dataset hash, and the batch settings.
+
+00:01:44.580 --> 00:01:49.480
+The CPU recording uses a tiny classifier to exercise the infrastructure,
+
+00:01:50.032 --> 00:01:54.873
+and the separate GPU extension fine-tunes a pretrained language
+
+00:01:54.873 --> 00:01:56.393
+model with LoRA.
+
+00:01:57.453 --> 00:02:02.313
+This configuration that I have set up completes 20
+
+00:02:02.313 --> 00:02:05.352
+optimizer updates on a local CPU,
+
+00:02:06.132 --> 00:02:09.053
+and then saves a checkpoint on every 5 updates.
+
+00:02:09.515 --> 00:02:12.195
+So runtime and retries are bounded.
+
+00:02:13.262 --> 00:02:17.632
+The recording contains actual command output, so these are the outputs
+
+00:02:17.632 --> 00:02:20.732
+that I was doing when it was running locally. This baseline gives a
+
+00:02:20.732 --> 00:02:23.612
+recovery run concrete reference for comparison.
+
+00:02:24.652 --> 00:02:29.392
+Next, I injected a real worker failure at update 7
+
+00:02:29.392 --> 00:02:31.352
+using SIGKILL.
+
+00:02:31.352 --> 00:02:35.086
+The run correctly reports that failure.
+
+00:02:35.586 --> 00:02:40.246
+And it jumps back to its most recent complete checkpoint,
+
+00:02:41.086 --> 00:02:42.186
+which was update 5.
+
+00:02:42.854 --> 00:02:45.694
+Recovery restores more than just the model.
+
+00:02:45.894 --> 00:02:49.854
+It restores the optimizer, the learning rate scheduler, and the random
+
+00:02:49.854 --> 00:02:53.114
+number generator state, and its position in the training data.
+
+00:02:53.754 --> 00:02:57.874
+So it doesn't skip over any of the datasets.
+
+00:02:59.127 --> 00:03:01.087
+Now, this worker resumes from 5,
+
+00:03:01.827 --> 00:03:02.327
+stage 5,
+
+00:03:03.167 --> 00:03:08.047
+recomputes update 6 and 7, and then continues on through
+
+00:03:08.047 --> 00:03:08.587
+its batches.
+
+00:03:09.247 --> 00:03:14.207
+The raw log preserves repeated updates while canonical view selects
+
+00:03:14.207 --> 00:03:15.987
+the latest attempt for each update.
+
+00:03:17.047 --> 00:03:21.391
+Now, after finishing successfully, I wanted to also establish that
+
+00:03:22.711 --> 00:03:25.291
+it recovered correctly.
+
+00:03:25.711 --> 00:03:30.671
+and what we do is compare 7 state fields against
+
+00:03:30.671 --> 00:03:35.291
+an uninterrupted baseline using relative zero tolerance,
+
+00:03:36.011 --> 00:03:40.511
+and an absolute tolerance of 1 times 10 to the negative 7.
+
+00:03:41.141 --> 00:03:44.881
+And when we do that, the comparison passes.
+
+00:03:46.361 --> 00:03:48.801
+So you can also see the recovery history directly.
+
+00:03:49.581 --> 00:03:50.641
+Restoration at 5,
+
+00:03:51.341 --> 00:03:51.901
+completion at 20,
+
+00:03:52.661 --> 00:03:55.921
+22 raw metric rows, and 20 canonical rows.
+
+00:03:56.991 --> 00:04:00.751
+Now, for evaluation, we use the same holdout system.
+
+00:04:01.551 --> 00:04:05.211
+We take the paired predictions and the per-class metrics,
+
+00:04:06.371 --> 00:04:10.751
+and we take what makes model iteration traceable to be a specific dataset
+
+00:04:10.751 --> 00:04:13.871
+configuration and checkpoint.
+
+00:04:14.182 --> 00:04:17.502
+Locally, I also tested two Ray workers using PyTorch,
+
+00:04:18.202 --> 00:04:19.462
+distributed training with Gloo,
+
+00:04:20.462 --> 00:04:22.902
+including recovery after a worker failure.
+
+00:04:23.313 --> 00:04:24.793
+Those are separate measured runs.
+
+00:04:25.633 --> 00:04:29.373
+Since this was a smaller scale, distributed execution was slower because
+
+00:04:29.373 --> 00:04:33.353
+setup and coordination outweighed the useful computation.
+
+00:04:34.383 --> 00:04:35.743
+And so inside of Databricks,
+
+00:04:36.723 --> 00:04:39.283
+we verify the dataset preparation,
+
+00:04:40.683 --> 00:04:44.627
+delta table, their writes and their reads, an artifact export, and some
+
+00:04:44.627 --> 00:04:45.587
+result imports.
+
+00:04:46.732 --> 00:04:51.012
+Each of the eight run bundles was imported twice,
+
+00:04:51.772 --> 00:04:55.872
+and the resulting tables contain zero duplicate key groups.
+
+00:04:56.172 --> 00:04:58.552
+Raw metrics retain retry history,
+
+00:04:59.412 --> 00:05:04.412
+and the canonical view supports comparison without double counting
+
+00:05:04.412 --> 00:05:06.252
+some of these repeated updates.
+
+00:05:06.708 --> 00:05:10.683
+These results came
+
+00:05:10.683 --> 00:05:13.943
+from an executed Databricks notebook.
+
+00:05:14.923 --> 00:05:19.063
+This is a separate run on a Kaggle Tesla T4 GPU.
+
+00:05:20.053 --> 00:05:24.543
+It uses the pretrained SmolLM2 model with about
+
+00:05:24.543 --> 00:05:26.743
+135 million parameters.
+
+00:05:27.363 --> 00:05:30.623
+LoRA updates only 460,800
+
+00:05:30.623 --> 00:05:35.583
+adapter parameters while
+
+00:05:35.583 --> 00:05:36.803
+keeping the base model frozen.
+
+00:05:36.803 --> 00:05:41.263
+And I completed the two update smoke tests.
+
+00:05:41.762 --> 00:05:46.342
+And then at update three, I forced a real failure, restored
+
+00:05:46.342 --> 00:05:47.162
+checkpoint two,
+
+00:05:47.962 --> 00:05:49.082
+continue to update four.
+
+00:05:50.142 --> 00:05:54.002
+The recovery checkpoint matched the uninterrupted reference across the
+
+00:05:54.002 --> 00:05:56.602
+complete saved state with zero tensor difference.
+
+00:05:57.662 --> 00:06:00.562
+The recovery correctness and model quality have separate checks.
+
+00:06:00.562 --> 00:06:05.362
+After the single GPU recovery test, I compared that base model and adapter
+
+00:06:05.362 --> 00:06:06.962
+on the complete heldout set.
+
+00:06:08.042 --> 00:06:13.022
+The main GPU experiment completed 100 updates and its first attempt
+
+00:06:13.022 --> 00:06:15.502
+hit a 45 minute deadline during the evaluation.
+
+00:06:16.382 --> 00:06:18.882
+So I preserved that failure and restored the final checkpoint.
+
+00:06:19.310 --> 00:06:23.550
+After batching generation, I resumed the evaluation completing all
+
+00:06:23.550 --> 00:06:27.850
+3,076 tests without repeating training.
+
+00:06:28.850 --> 00:06:33.710
+There was a macro F1 increase from zero to about
+
+00:06:33.710 --> 00:06:38.318
+0.049, as 96 predictions
+
+00:06:38.318 --> 00:06:38.928
+improved.
+
+00:06:40.358 --> 00:06:44.818
+But more than 95% of adapter responses were still invalid labels at
+
+00:06:44.818 --> 00:06:45.258
+that point.
+
+00:06:45.617 --> 00:06:50.097
+The evaluation at that point exposed the next engineering problem, which
+
+00:06:50.097 --> 00:06:51.717
+was label generation.
+
+00:06:52.587 --> 00:06:55.117
+Prompt did not list all 77 choices,
+
+00:06:56.417 --> 00:06:58.857
+and the base produced no exact valid labels.
+
+00:06:59.467 --> 00:07:02.927
+So what I did was I downloaded the reports and checkpoints, checking
+
+00:07:02.927 --> 00:07:03.567
+their hashes,
+
+00:07:04.347 --> 00:07:06.147
+and stopped the GPU session.
+
+00:07:06.577 --> 00:07:11.343
+And then I imported all of them into Databricks, all four of
+
+00:07:11.343 --> 00:07:11.983
+LoRA runs.
+
+00:07:12.524 --> 00:07:17.484
+And notice that the counts stayed at 111 raw metrics
+
+00:07:17.484 --> 00:07:22.124
+and 3,076 paired predictions
+
+00:07:22.124 --> 00:07:25.444
+with 110 canonical metrics and zero duplicates.
+
+00:07:26.504 --> 00:07:30.044
+So the architecture separates local GPU compute
+
+00:07:31.102 --> 00:07:35.762
+from our Databricks reporting and transferred every
+
+00:07:35.762 --> 00:07:37.402
+verified object between them.
+
+00:07:37.702 --> 00:07:42.642
+If you look at the linked FigJam board, you'll see the documents
+
+00:07:42.642 --> 00:07:43.762
+on our system,
+
+00:07:44.502 --> 00:07:48.782
+our architectural decision records, the training recovery and the import
+
+00:07:48.782 --> 00:07:49.202
+flows,
+
+00:07:50.002 --> 00:07:51.502
+and the system design behind it.
+
+00:07:51.802 --> 00:07:54.662
+The deployment stage adds durable shared storage,
+
+00:07:55.582 --> 00:07:56.762
+managed job orchestration,
+
+00:07:57.533 --> 00:07:58.793
+operational monitoring,
+
+00:08:00.003 --> 00:08:04.963
+following the multi-node load and the host loss recovery validation.
+
+00:08:05.359 --> 00:08:08.179
+This result is something reproducible,
+
+00:08:09.079 --> 00:08:10.399
+training platform.
+
+00:08:10.699 --> 00:08:12.239
+With a test of failure recovery,
+
+00:08:13.079 --> 00:08:17.519
+GPU fine-tuning and traceable evaluation using standardized libraries.
