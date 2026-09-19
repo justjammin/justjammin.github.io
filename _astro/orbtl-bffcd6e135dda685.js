@@ -1247,8 +1247,8 @@ function gameDraw(t) {
     for (const p of game.parts) { g.fillStyle = `rgba(60,120,255,${p.l * 2})`; g.fillRect(p.x, p.y, 4, 4); }
     g.strokeStyle = 'rgba(0,77,255,0.5)'; g.beginPath(); g.moveTo(0, GH - 24); g.lineTo(GW, GH - 24); g.stroke();
     g.textAlign = 'center';
-    if (!game.running && !game.over) { g.font = '900 40px "Geist", Arial, sans-serif'; g.fillStyle = '#004dff'; g.fillText('ORBTL DEFENDER', 256, 130); g.font = '700 18px "Geist Mono", monospace'; g.fillStyle = '#90b0ff'; if (Math.floor(t * 2) % 2 === 0) g.fillText((matchMedia('(any-pointer: coarse), (max-width: 767px)').matches ? 'TAP START / FIRE' : 'PRESS SPACE TO START'), 256, 200); g.font = '700 13px "Geist Mono", monospace'; g.fillStyle = '#2a6aff'; g.fillText((matchMedia('(any-pointer: coarse), (max-width: 767px)').matches ? 'USE THE CONTROLS BELOW' : '← →  MOVE     SPACE  FIRE     ESC  LEAVE'), 256, 240); }
-    if (game.over) { g.font = '900 44px "Geist", Arial, sans-serif'; g.fillStyle = '#004dff'; g.fillText('GAME OVER', 256, 130); g.font = '700 18px "Geist Mono", monospace'; g.fillStyle = '#90b0ff'; g.fillText('SCORE ' + game.score + '   BEST ' + game.best, 256, 190); if (Math.floor(t * 2) % 2 === 0) g.fillText((matchMedia('(any-pointer: coarse), (max-width: 767px)').matches ? 'TAP START / FIRE TO RESTART' : 'SPACE TO RESTART'), 256, 230); }
+    if (!game.running && !game.over) { g.font = '900 40px "Geist", Arial, sans-serif'; g.fillStyle = '#004dff'; g.fillText('ORBTL DEFENDER', 256, 130); g.font = '700 18px "Geist Mono", monospace'; g.fillStyle = '#90b0ff'; if (Math.floor(t * 2) % 2 === 0) g.fillText((matchMedia('(hover: none) and (pointer: coarse)').matches ? 'TAP START / FIRE' : 'PRESS SPACE TO START'), 256, 200); g.font = '700 13px "Geist Mono", monospace'; g.fillStyle = '#2a6aff'; g.fillText((matchMedia('(hover: none) and (pointer: coarse)').matches ? 'USE THE CONTROLS BELOW' : '← →  MOVE     SPACE  FIRE     ESC  LEAVE'), 256, 240); }
+    if (game.over) { g.font = '900 44px "Geist", Arial, sans-serif'; g.fillStyle = '#004dff'; g.fillText('GAME OVER', 256, 130); g.font = '700 18px "Geist Mono", monospace'; g.fillStyle = '#90b0ff'; g.fillText('SCORE ' + game.score + '   BEST ' + game.best, 256, 190); if (Math.floor(t * 2) % 2 === 0) g.fillText((matchMedia('(hover: none) and (pointer: coarse)').matches ? 'TAP START / FIRE TO RESTART' : 'SPACE TO RESTART'), 256, 230); }
   }
   // scanlines + vignette
   g.fillStyle = 'rgba(0,0,0,0.22)'; for (let y = 0; y < GH; y += 4) g.fillRect(0, y, GW, 2);
@@ -1291,8 +1291,10 @@ function setMode(m, arg) {
   hudEl.hidden = m !== 'hoop'; hudMsg.textContent = '';
   canvas.style.cursor = m === 'home' ? '' : (m === 'hoop' ? 'grab' : 'default');
   canvas.classList.toggle('mode', m !== 'home');
-  game.keys.left = game.keys.right = game.keys.fire = false;
-  state.dragStart = null;
+  if (touchScene.matches) {
+    game.keys.left = game.keys.right = game.keys.fire = false;
+    state.dragStart = null;
+  }
   document.documentElement.dataset.orbtlScene = m;
   window.dispatchEvent(new CustomEvent('orbtl:scene-mode'));
   if (m === 'tv') showTV(arg === undefined ? state.tvIndex : arg); else tvcap.hidden = true;
@@ -1332,9 +1334,10 @@ window.addEventListener('pointermove', (e) => {
   if ((state.mode === 'home' || state.mode === 'tv') && (window.scrollY || 0) < 40 && e.target === canvas) { state.hover = pick(e); canvas.style.cursor = state.hover ? 'pointer' : ''; hoverProps(e); }
   else { slider.want = 0; lastPtr = null; }
 }, { passive: true });
+const touchScene = matchMedia('(hover: none) and (pointer: coarse)');
 let touchStart = null;
 canvas.addEventListener('pointerdown', (e) => {
-  if (e.pointerType !== 'mouse' && state.mode === 'home') {
+  if (touchScene.matches && e.pointerType !== 'mouse' && state.mode === 'home') {
     touchStart = { x: e.clientX, y: e.clientY };
     return;
   }
@@ -1358,8 +1361,9 @@ canvas.addEventListener('pointerup', (e) => {
   }
   touchStart = null;
 });
-canvas.addEventListener('pointercancel', () => { touchStart = null; state.dragStart = null; });
+canvas.addEventListener('pointercancel', () => { if (touchScene.matches) { touchStart = null; state.dragStart = null; } });
 window.addEventListener('orbtl:scene-action', ({ detail: { action, pressed } }) => {
+  if (!touchScene.matches) return;
   if (['home', 'arcade', 'hoop', 'tv'].includes(action)) setMode(action);
   if (state.mode === 'tv' && ['previous', 'next'].includes(action)) showTV(state.tvIndex + (action === 'next' ? 1 : -1));
   if (state.mode === 'hoop' && action === 'shoot' && ball.held) throwBall(0, 150, 250);
@@ -1370,7 +1374,7 @@ window.addEventListener('orbtl:scene-action', ({ detail: { action, pressed } }) 
   if (action === 'release') game.keys.left = game.keys.right = game.keys.fire = false;
 });
 document.addEventListener('click', (e) => {
-  if (e.target.closest('a[href^="#"]') && state.mode !== 'home') setMode('home');
+  if (touchScene.matches && e.target.closest('a[href^="#"]') && state.mode !== 'home') setMode('home');
 }, true);
 document.documentElement.dataset.orbtlScene = state.mode;
 window.dispatchEvent(new CustomEvent('orbtl:scene-mode'));
