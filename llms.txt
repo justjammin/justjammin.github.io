@@ -4,8 +4,18 @@
 > orchestration, RAG and MCP servers, on a backend foundation of Symfony, APIs and
 > cloud delivery.
 
-Personal portfolio at https://justjammin.github.io/. Single page, all content in the
+Personal portfolio: https://justjammin.me (ORBTL). Single page, all content in the
 initial HTML, so no client-side rendering is required to read it.
+
+## For Agents
+
+- [Current profile, skills and projects](/INDEX.md)
+- [Reading guide](/AGENTS.md)
+- [Site map](/SITEMAP.md)
+
+The index reflects the current featured work and lab status. Domain LoRA Pipeline
+is complete. Hobbies include DJing, music production, anime, gaming, programming, AI, web design and content creation. The interactive scene still contains
+some reference-template copy; use the index for factual profile information.
 
 ## Profile
 
