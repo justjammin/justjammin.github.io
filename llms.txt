@@ -10,6 +10,11 @@ profile index for current skills, featured projects and lab status; decorative
 scene graphics and reference-template copy are not evidence of project outcomes.
 Domain LoRA Pipeline is complete; the remaining lab projects are queued.
 
+## Official profiles
+
+- [ORBTL portfolio](https://justjammin.github.io/): Jamin's official portfolio and the canonical website for this content.
+- [Jamin on LinkedIn](https://www.linkedin.com/in/jamin-echols-59b1998a): Professional profile for the same person, Jamin (@justjammin).
+
 ## For Agents
 
 - [Current profile, skills and projects](/INDEX.md): Authoritative profile, experience, hobbies, featured work and lab status.

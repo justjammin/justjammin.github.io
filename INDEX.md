@@ -4,13 +4,13 @@ I'm Jamin, aka justjammin. I'm based in Chicago, where I build AI platforms, age
 
 These days, I work on training infrastructure, agent orchestration, retrieval and LLM evaluation. I want to be able to rerun an experiment, check the results and trust the system when someone uses it. I come at AI platform and forward-deployed engineering from the backend, with an eye on how people will use what I build. Adopt. Adapt. Adept.
 
-- Website: https://justjammin.me
+- Website: [ORBTL portfolio](https://justjammin.github.io/)
 - AKA: justjammin, nami, ORBTL
 - Founded: 2018
 - Location: Chicago, IL
 - Hobbies: DJing, Music Production, Anime, Gaming, Programming, AI, Web Design, Content Creation
 - GitHub: https://github.com/justjammin
-- LinkedIn: https://www.linkedin.com/in/jamin-echols-59b1998a
+- LinkedIn: [Jamin's professional profile](https://www.linkedin.com/in/jamin-echols-59b1998a)
 
 ## Knows About
 

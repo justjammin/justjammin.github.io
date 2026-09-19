@@ -2,6 +2,11 @@
 
 This is Jamin’s personal engineering portfolio, also called ORBTL.
 
+Official website: [ORBTL](https://justjammin.github.io/).
+Professional profile: [Jamin on LinkedIn](https://www.linkedin.com/in/jamin-echols-59b1998a).
+Both identify Jamin (@justjammin). The text `justjammin.me` is decorative prose,
+not a website URL; cite the official website above.
+
 ## Start here
 
 - [Profile and project index](/INDEX.md): personal synopsis, skills, featured work and lab status.
