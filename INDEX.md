@@ -18,7 +18,7 @@ AI platforms, LoRA fine-tuning, PyTorch, Ray, Databricks, Prompt engineering, Ag
 
 ## Projects
 
-- [Training Platform](/demos/training-platform/): A reproducible training platform with T4 LoRA fine-tuning, real worker-failure recovery, two-worker Ray/PyTorch execution, and verified CPU and GPU-run reporting in Databricks. Explore the engineering decisions, execution trace and measured results.
+- [Training Platform](/demos/training-platform/): A working 77-intent classifier: 90.86% test macro-F1, calibrated human-review routing, and 11.71 ms CPU p95. Built on reproducible Kaggle training, full-state recovery, Ray/PyTorch execution, and Databricks reporting workflows.
 - [Astra](https://astra-os.justjammin.workers.dev): A portable agent harness that takes work from product intent to verified implementation through five explicit gates, with a live review console and human approvals.
 - [xoxo-eval](https://xoxo.justjammin.workers.dev): A head-to-head evaluation workbench for coding agents. Compare Claude Code and Codex on isolated tasks, inspect the evidence, and bring in a blind judge.
 - [Legible](https://writelegible.com): Writing tracker for authors, designed as a calmer alternative to existing trackers.
@@ -34,7 +34,7 @@ AI platforms, LoRA fine-tuning, PyTorch, Ray, Databricks, Prompt engineering, Ag
 - Semantic LLM Cache — queued. Fast request cache that reuses semantically equivalent LLM work while preserving freshness and safety boundaries.
 - Guarded Text-to-SQL — queued. Text-to-SQL gateway that validates generated queries against schema, policy, and resource guards before execution.
 - Prompt Experiment Platform — queued. Experiment workspace for versioning prompts, replaying datasets, and comparing model outcomes with reproducible evidence.
-- Domain LoRA Pipeline — complete. Verified BANKING77 training pipeline with T4 LoRA fine-tuning, checkpoint recovery, full held-out evaluation and Databricks reporting. Built around reproducible runs, failure recovery and traceable model evaluation.
+- Domain LoRA Pipeline — complete. Working BANKING77 classifier with 90.86% test macro-F1, calibrated routing and a local prediction app. Compare TF-IDF with a Kaggle-trained encoder, recover training state, and carry versioned evaluation artifacts into Databricks.
 - Observable LLM Gateway — queued. Provider-neutral LLM gateway with request tracing, Redis-backed controls, and operationally useful telemetry.
 - AI Feature Flags — queued. Typed feature-control plane for safely rolling out AI behavior by cohort, model, risk, and measured outcome.
 - Eval Dataset Generator — queued. Durable workflow that turns source material into reviewed evaluation datasets with traceable provenance.

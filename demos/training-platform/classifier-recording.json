@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-19T15:18:36.342182+00:00",
+  "capture": "Actual local POST /predict responses; visual replay, not a browser screen recording.",
+  "examples": [
+    {
+      "title": "Card delivery",
+      "question": "My card hasn't arrived yet. How can I track it?",
+      "response": {
+        "intent": "card_arrival",
+        "alternatives": [
+          {
+            "intent": "card_arrival",
+            "probability": 0.982289880239588
+          },
+          {
+            "intent": "card_delivery_estimate",
+            "probability": 0.003635907047092457
+          },
+          {
+            "intent": "lost_or_stolen_card",
+            "probability": 0.002319996975389343
+          }
+        ],
+        "route": "intent_queue",
+        "reasons": [
+          "routing_thresholds_met"
+        ],
+        "model_version": "337ea9f23fcb64182dcd337067382d9dff01e9ba1565b2315a54883375408d91",
+        "latency_ms": 27.205874997889623,
+        "truncated": false
+      },
+      "request_roundtrip_ms": 54.592915999819525
+    },
+    {
+      "title": "Needs clarification",
+      "question": "Something is wrong with my account",
+      "response": {
+        "intent": "terminate_account",
+        "alternatives": [
+          {
+            "intent": "terminate_account",
+            "probability": 0.4526615466672825
+          },
+          {
+            "intent": "compromised_card",
+            "probability": 0.20899456657733106
+          },
+          {
+            "intent": "card_payment_not_recognised",
+            "probability": 0.04403063537236675
+          }
+        ],
+        "route": "human_review",
+        "reasons": [
+          "low_confidence"
+        ],
+        "model_version": "337ea9f23fcb64182dcd337067382d9dff01e9ba1565b2315a54883375408d91",
+        "latency_ms": 13.352124995435588,
+        "truncated": false
+      },
+      "request_roundtrip_ms": 15.009583003120497
+    },
+    {
+      "title": "Unrelated question",
+      "question": "How do I grow tomatoes on a balcony?",
+      "response": {
+        "intent": "receiving_money",
+        "alternatives": [
+          {
+            "intent": "receiving_money",
+            "probability": 0.1408635122275068
+          },
+          {
+            "intent": "order_physical_card",
+            "probability": 0.13996351956900407
+          },
+          {
+            "intent": "automatic_top_up",
+            "probability": 0.1229468006572056
+          }
+        ],
+        "route": "human_review",
+        "reasons": [
+          "low_confidence"
+        ],
+        "model_version": "337ea9f23fcb64182dcd337067382d9dff01e9ba1565b2315a54883375408d91",
+        "latency_ms": 12.149000001954846,
+        "truncated": false
+      },
+      "request_roundtrip_ms": 13.327833003131673
+    }
+  ]
+}
