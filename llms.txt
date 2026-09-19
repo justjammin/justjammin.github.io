@@ -1,42 +1,30 @@
-# Jamin (@justjammin)
+# ORBTL — Jamin (@justjammin)
 
-> AI and backend engineer. Builds agent tooling: prompt engineering, multi-agent
-> orchestration, RAG and MCP servers, on a backend foundation of Symfony, APIs and
-> cloud delivery.
+> Personal engineering and music studio of Jamin, a Chicago-based engineer
+> focused on AI platforms, agent tooling, backend systems and forward-deployed
+> engineering.
 
-Personal portfolio: https://justjammin.me (ORBTL). Single page, all content in the
-initial HTML, so no client-side rendering is required to read it.
+The homepage and Training Platform demo include readable HTML. The interactive
+3D scene requires JavaScript, but the profile index does not. Use the generated
+profile index for current skills, featured projects and lab status; decorative
+scene graphics and reference-template copy are not evidence of project outcomes.
+Domain LoRA Pipeline is complete; the remaining lab projects are queued.
 
 ## For Agents
 
-- [Current profile, skills and projects](/INDEX.md)
-- [Reading guide](/AGENTS.md)
-- [Site map](/SITEMAP.md)
+- [Current profile, skills and projects](/INDEX.md): Authoritative profile, experience, hobbies, featured work and lab status.
+- [Reading guide](/AGENTS.md): How to interpret the portfolio and its evidence.
+- [Site map](/SITEMAP.md): Available pages and supporting files.
 
-The index reflects the current featured work and lab status. Domain LoRA Pipeline
-is complete. Hobbies include DJing, music production, anime, gaming, programming, AI, web design and content creation. The interactive scene still contains
-some reference-template copy; use the index for factual profile information.
+## Featured projects
 
-## Profile
+- [Training Platform](/demos/training-platform/): BANKING77 intent classification, calibrated human-review routing, reproducible training, recovery and evaluation evidence.
+- [Classifier evidence](/demos/training-platform/classifier-evidence.json): Measured encoder results, including test macro-F1, routing coverage, latency scope and environment. These are separate from the GPU LoRA experiment.
+- [Astra](https://astra-os.justjammin.workers.dev): Agent harness with five explicit gates from product intent to verified implementation.
+- [xoxo-eval](https://xoxo.justjammin.workers.dev): Head-to-head coding-agent evaluation with isolated tasks, assertions and blind judging.
+- [Legible](https://writelegible.com): Writing tracker for authors.
 
-- Name: Jamin, handle `justjammin`
-- Specialty: scalability + ingenuity
-- Focus areas: AI, agents, backend, growth
-- Education: Lewis University; MIT OpenCourseWare and AWS certification
-- GitHub: https://github.com/justjammin
-- Gists: https://gist.github.com/justjammin
-
-## Skills
-
-- Agent tooling: prompt engineering, multi-agent orchestration, MCP servers, agent routing
-- Retrieval: RAG, hybrid retrieval (dense vectors, BM25, graph PPR), cross-encoder
-  reranking, vector databases, context engineering
-- Daily driver: TypeScript, Node.js, Next.js, Vue, Tailwind
-- Also fluent: Python, Go, C#, PHP, Symfony, REST APIs, Flask
-- Delivery: CI/CD, Kubernetes, AWS, LLMOps
-- Growth: marketing, analytics, digital, social, community, service, teaching
-
-## Projects
+## Additional projects
 
 - [promper](https://github.com/justjammin/promper): Prompt-engineering toolkit for Claude
   Code. Decomposes a rough intent, walks the agent map to find the specialist the task
@@ -61,8 +49,6 @@ some reference-template copy; use the index for factual profile information.
 
 ## Writing
 
-An MLOps guidebook series on running machine learning in production:
-
 - [What Is MLOps and Why Should You Care?](https://gist.github.com/justjammin/4bddeb5ab11ec1b7ac493472ab20cfaf)
 - [Data Architecture for ML: The Medallion Pattern](https://gist.github.com/justjammin/1c01214055b9cd2e3def821223296638)
 - [Experiment Tracking and the Model Registry](https://gist.github.com/justjammin/21aa1495ebcdb0e38191ef198e1fb1e5)
@@ -71,14 +57,3 @@ An MLOps guidebook series on running machine learning in production:
 - [LLM Cost Optimization: What Actually Moves the Needle](https://gist.github.com/justjammin/f102c929cc14d0d3bd600d9b135d5a4c)
 - [CI/CD for Machine Learning](https://gist.github.com/justjammin/a861fc629b1da0397ebf7cbcd1a1161f)
 - [Monitoring: Catching Problems Before Your Users Do](https://gist.github.com/justjammin/2a7c3a23191193d2df4ef8135f8d5cfb)
-
-## In his own words
-
-- "I care about reliable delivery: CI/CD, Kubernetes, and AWS so shipping stays boring in the
-  best way."
-- "Backend-first craft with Symfony, APIs, and services—paired with solid front-end and web
-  work when the problem needs it."
-- "Front-end, UX, UI, and web design — where engineering meets psychology and the interface
-  finally feels good to use."
-- "I'm not going to shy away from change, Adopt/Adapt/Adept is my mantra in these AI-centric
-  times."
