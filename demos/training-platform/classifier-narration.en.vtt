@@ -1,0 +1,171 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.280
+So, customer opens up their banking app and types.
+
+00:00:08.280 --> 00:00:14.520
+My card hasn't arrived yet. How can I track it?
+Where is it?
+
+00:00:14.520 --> 00:00:20.680
+They want to know where their card is and the first
+step is getting that question to the right place.
+
+00:00:20.680 --> 00:00:27.080
+So I built a classifier that identifies what the
+customer needs and returns a routing decision
+
+00:00:27.080 --> 00:00:33.140
+to a support queue, whether it be a person or an
+application.
+
+00:00:33.140 --> 00:00:44.540
+So here, the classifier is recognizing a card
+arrival question with 98% confidence.
+
+00:00:44.540 --> 00:00:54.380
+That clears the routing threshold and so the result
+is marked for a matching intent queue.
+
+00:00:54.380 --> 00:00:59.880
+Once it's connected to the support system, that
+decision could open a delivery status
+
+00:00:59.880 --> 00:01:08.280
+workflow or direct the request to a team handling
+missing cards.
+
+00:01:08.280 --> 00:01:13.080
+Now the customer says something different.
+
+00:01:13.080 --> 00:01:17.160
+They say something's wrong with my account.
+
+00:01:17.160 --> 00:01:25.360
+That is a pretty vague question, that's a pretty
+vague request.
+
+00:01:25.360 --> 00:01:28.720
+It's not enough detail to choose a next step on.
+
+00:01:28.720 --> 00:01:37.120
+And so the classifier with not too low confidence
+but not high enough to make a decision off
+
+00:01:37.120 --> 00:01:44.880
+of returns that it needs human review, along with
+its leading alternatives and reasons
+
+00:01:44.880 --> 00:01:48.320
+behind the review request.
+
+00:01:48.320 --> 00:01:57.200
+The system still scores the banking categories, the
+essentials so to say, but none of them
+
+00:01:57.200 --> 00:02:03.560
+will clear the confidence threshold and a predicted
+label will not trigger automatic
+
+00:02:03.560 --> 00:02:12.400
+routing because of the confidence threshold never
+being cleared.
+
+00:02:12.400 --> 00:02:20.920
+On the actual banking questions, the policy accepted
+about 42% for automatic routing.
+
+00:02:20.920 --> 00:02:29.920
+Within that group, it got a 99.46% accuracy.
+
+00:02:29.920 --> 00:02:32.280
+That's your operating trade off.
+
+00:02:32.280 --> 00:02:42.820
+You get to automate a decent chunk of the work while
+keeping a clear set review path for everyone else.
+
+00:02:42.820 --> 00:02:51.000
+So under the hood, we're looking at a Hugging Face
+data set called BANKING77.
+
+00:02:51.000 --> 00:02:58.880
+And so each decision point had its own subset of
+data.
+
+00:02:58.880 --> 00:03:09.160
+So I compared a TF-IDF baseline with a pre-trained
+text encoder.
+
+00:03:09.160 --> 00:03:16.520
+And then I trained two different encoder
+configurations on some Kaggle GPUs.
+
+00:03:16.520 --> 00:03:21.400
+Now the stronger encoder ended up getting the better
+validation results.
+
+00:03:21.400 --> 00:03:30.960
+I also tested what happens when the training hits a
+bug, stops unexpectedly or crashes.
+
+00:03:30.960 --> 00:03:33.720
+We have forced crash tests.
+
+00:03:33.720 --> 00:03:40.440
+And so what we're doing is we restore the model, the
+optimizer and the training position from a
+checkpoint.
+
+00:03:40.440 --> 00:03:48.000
+And then we verify and validate that the recovered
+run matches the uninterrupted training.
+
+00:03:48.000 --> 00:03:54.960
+This makes our future work recoverable and
+repeatable.
+
+00:03:54.960 --> 00:03:59.240
+And so we need to make our decisions traceable.
+
+00:03:59.240 --> 00:04:12.360
+And every prediction includes its model version, its
+confidence, its routing reason, and latency within
+it.
+
+00:04:12.360 --> 00:04:18.360
+Evaluation reports travel with verified artifact
+hashes and reporting adapters, support local
+
+00:04:18.360 --> 00:04:20.840
+checks, and Databricks imports.
+
+00:04:20.840 --> 00:04:27.320
+And so we have a way to have the engineer who is
+managing this and watching and building
+
+00:04:27.320 --> 00:04:34.360
+telemetry about this, a way to investigate decisions
+that go awry and compare model releases
+
+00:04:34.360 --> 00:04:40.080
+as they upgrade and iterate and make better.
+
+00:04:40.080 --> 00:04:46.240
+So this project connects model training to business
+applications.
+
+00:04:46.240 --> 00:04:58.760
+It takes decisions and requests, chooses our route,
+and makes uncertainty visible.
+
+00:04:58.760 --> 00:05:08.880
+It demonstrates the engineering behind an AI support
+tool, applied AI at its finest.
+
+00:05:08.880 --> 00:05:14.880
+Measured behavior, recoverable tracing, and a clear
+interface where any application can
+
+00:05:14.880 --> 00:05:18.550
+integrate with. And that's what I built.
