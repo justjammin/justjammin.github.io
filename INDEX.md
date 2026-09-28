@@ -25,7 +25,7 @@ AI platforms, LoRA fine-tuning, PyTorch, Ray, Databricks, Prompt engineering, Ag
 
 ## Lab
 
-- Model Regression Detector — queued. Evaluation service that catches quality, safety, and latency regressions before a model change reaches production.
+- Model Regression Detector — active. Recorded Qwen evaluation on a Kaggle T4: a prompt change drops fixture accuracy from 87.5% to 25%, with immutable evidence and a failing regression gate.
 - LLM Cost Autopilot — queued. Queue-driven budget controller that measures LLM spend and applies safe routing and batch policies automatically.
 - AI Failure Forensics — queued. Trace-first incident workbench for reconstructing why an AI feature failed across requests, tools, and model calls.
 - Self-Healing Docs — queued. GitHub automation that detects stale code examples and opens focused documentation repairs with evidence.

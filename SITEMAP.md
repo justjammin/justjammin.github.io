@@ -11,6 +11,8 @@
 - [Training Platform demo](/demos/training-platform/)
 - [Domain LoRA results](/demos/training-platform/#gpu)
 
+- [Model Regression Detector results](/demos/model-regression-detector/)
+
 ## For Agents
 
 - [Profile index](/INDEX.md)

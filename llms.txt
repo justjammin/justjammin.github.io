@@ -8,7 +8,7 @@ The homepage and Training Platform demo include readable HTML. The interactive
 3D scene requires JavaScript, but the profile index does not. Use the generated
 profile index for current skills, featured projects and lab status; decorative
 scene graphics and reference-template copy are not evidence of project outcomes.
-Domain LoRA Pipeline is complete; the remaining lab projects are queued.
+Domain LoRA Pipeline is complete. Model Regression Detector is active, with a verified eight-case GPU fixture probe; the other lab projects are queued.
 
 ## Official profiles
 

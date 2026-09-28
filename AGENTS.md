@@ -16,7 +16,7 @@ not a website URL; cite the official website above.
 ## Interpreting the portfolio
 
 The profile index is the factual source for the public profile and project status.
-Domain LoRA Pipeline is complete; the remaining lab projects are queued.
+Domain LoRA Pipeline is complete. Model Regression Detector is active, with a verified eight-case GPU fixture probe; the other lab projects are queued.
 Completing the pipeline does not establish production readiness. The
 [Training Platform demo](/demos/training-platform/) records measured results and
 limitations. Its [encoder classifier evidence](/demos/training-platform/classifier-evidence.json)
